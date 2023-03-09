@@ -2,9 +2,24 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Bootstrap 4 sign up form</title>
+  <title>sign up form</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
-
+  <script> 
+    var signupClick = function(values) {
+      console.log(values)
+      // var updateXHR: XMLHttpRequest = new XMLHttpRequest();
+     
+      // updateXHR.onload = function() {
+      //     console.log('Got back the update');
+      //     returnUsername = updateXHR.response.username;
+      //     signupClick();
+      // };
+      // updateXHR.open('GET', '/signupAsEndUser'+params, true);
+      // updateXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      // updateXHR.responseType = 'json'; // parses the response == JSON.parse(req.responseText);
+     // updateXHR.send(null);
+    }
+  </script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -31,7 +46,7 @@
    </div>
    <div class="d-flex flex-row align-items-center justify-content-between">
       
-                                <button class="btn btn-primary">Create Account</button>
+                                <button class="btn btn-primary" onclick="signupClick(this.value)">Create Account</button>
           </div>
        </form>
      </div>
