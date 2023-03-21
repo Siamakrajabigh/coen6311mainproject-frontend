@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
 
 * {
-  font-family: Lato, sans-serif;
+  font-family: cursive;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -11,7 +11,6 @@ body {
   background-color: #F5F5F5;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   margin: 50px 0;
 }

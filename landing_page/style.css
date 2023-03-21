@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
-
+main{
+  font-family: cursive;
+}
 /* CSS for Carousl*/
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
