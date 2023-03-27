@@ -88,6 +88,8 @@
         document.body.appendChild(form);
         form.submit();
       }
+      document.getElementById("sign-up").onclick = function () {
+        location.href = "https://www.greengrassfreelancer.com/sign_in.html";
     </script>
     
     <!-- <button id="sign-in-or-out-button"
@@ -132,7 +134,7 @@
     
             <div class="text-end">
               <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button>
-              <button class="btn btn-warning">Sign-up</button>
+              <button id="sign-up" class="btn btn-warning">Sign up</button>
             </div>
           </div>
         </div>
