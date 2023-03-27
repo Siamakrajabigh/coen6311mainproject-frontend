@@ -63,23 +63,40 @@
     </div>
     <script> 
     var submitRegisterForm = function() {
-        var params = '?firstName=' + document.getElementBzyId('firstName').value + 
+        var params = '?firstName=' + document.getElementById('firstName').value + 
                     '&lastName=' + document.getElementById('lastName').value +
                     '&username=' + document.getElementById('username').value +
                     '&password=' + document.getElementById('password').value;
         console.log(params);
 
-        var updateXHR = new XMLHttpRequest()
-        updateXHR.onload = function() {
-            console.log('Got back the update');
-            console.log(updateXHR.response);
-            debugger;
-            signupClick(updateXHR.response);
-        };
-        updateXHR.open('GET', '/signupAsEndUser'+params, true);
-        updateXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        updateXHR.responseType = 'json'; // parses the response == JSON.parse(req.responseText);
-        updateXHR.send(null);
+
+        fetch('https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(params)
+        })
+        .then(response => response.json())
+        .then(responseData => {
+         // Do something with the response data
+
+        })
+        .catch(error => {
+         // Handle any errors that occur during the API request
+        });
+
+        // var updateXHR = new XMLHttpRequest()
+        // updateXHR.onload = function() {
+        //     console.log('Got back the update');
+        //     console.log(updateXHR.response);
+        //     debugger;
+        //     signupClick(updateXHR.response);
+        // };
+        // updateXHR.open('GET', '/signupAsEndUser'+params, true);
+        // updateXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        // updateXHR.responseType = 'json'; // parses the response == JSON.parse(req.responseText);
+        // updateXHR.send(null);
     }
     </script>
 
