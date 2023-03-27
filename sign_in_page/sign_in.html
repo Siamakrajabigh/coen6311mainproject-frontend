@@ -22,31 +22,31 @@
                                     <form action="" class="row g-4">
                                         <h3 class="mb-3 text-center">Register</h3>
                                             <div class="col-12">
-                                                <label>Firstname<span class="text-danger">*</span></label>
+                                                <label>username<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="firstName" placeholder="Enter Firstname">
+                                                    <input type="text" class="form-control" id="firstName" placeholder="Enter username">
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <label>Lastname<span class="text-danger">*</span></label>
+                                                <label>email<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Lastname">
+                                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Email">
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <label>Username<span class="text-danger">*</span></label>
+                                                <label>skills<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="username" placeholder="Enter Username">
+                                                    <input type="text" class="form-control" id="username" placeholder="Enter skills">
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <label>Password<span class="text-danger">*</span></label>
+                                                <label>categories<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <input type="text" class="form-control" id="password" placeholder="Enter Password">
+                                                    <input type="text" class="form-control" id="password" placeholder="Enter categories">
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -62,41 +62,58 @@
         </div>
     </div>
     <script> 
-    var submitRegisterForm = function() {
-        var params = '?firstName=' + document.getElementById('firstName').value + 
-                    '&lastName=' + document.getElementById('lastName').value +
-                    '&username=' + document.getElementById('username').value +
-                    '&password=' + document.getElementById('password').value;
+    var submitRegisterForm = async function() {
+        var params = '?username=' + document.getElementById('username').value + 
+                    '&email=' + document.getElementById('email').value +
+                    '&skills=' + document.getElementById('skills').value +
+                    '&categories=' + document.getElementById('categories').value;
         console.log(params);
 
-
-        fetch('https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile', {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(params)
-        })
-        .then(response => response.json())
-        .then(responseData => {
-         // Do something with the response data
-
-        })
-        .catch(error => {
-         // Handle any errors that occur during the API request
+        let debugVar = null
+        let url = 'https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile'
+        let response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/html'
+            },
+            body: JSON.stringify(params)
         });
 
-        // var updateXHR = new XMLHttpRequest()
-        // updateXHR.onload = function() {
-        //     console.log('Got back the update');
-        //     console.log(updateXHR.response);
-        //     debugger;
-        //     signupClick(updateXHR.response);
-        // };
-        // updateXHR.open('GET', '/signupAsEndUser'+params, true);
-        // updateXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        // updateXHR.responseType = 'json'; // parses the response == JSON.parse(req.responseText);
-        // updateXHR.send(null);
+        if (response.ok) {
+            let responseText = await response.text();
+            console.log(responseText);
+        } 
+        else {
+            alert("HTTP-Error: " + response.status);
+        }
+        // fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //     'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(params)
+        // })
+        // .then(response =>{debugvar=response.text(); return response.text()})
+        // .then(responseData => {
+        //  // Do something with the response data
+        //  console.log(responseData)
+
+        // })
+        // .catch(error => {
+        //  // Handle any errors that occur during the API request
+        // });
+
+        let xhr = new XMLHttpRequest()
+        xhr.onload = function() {
+            console.log('Got back the update');
+            console.log(xhr.response);
+            debugger;
+            
+        };
+        xhr.open('GET', url+params, true);
+        updateXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        updateXHR.responseType = 'text/html'; // parses the response == JSON.parse(req.responseText);
+        updateXHR.send(null);
     }
     </script>
 
