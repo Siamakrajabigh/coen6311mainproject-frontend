@@ -332,8 +332,8 @@ headerTemplate.innerHTML = `
     
             <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center ">
 
-                <li><a href="landing_page.html"><img src="../images/greengrass-removebg-preview.png" alt="" height="50px" width="50px"></a></li>
-                <li><a href="../landing_page/landing_page.html" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="index.html"><img src="../images/greengrass-removebg-preview.png" alt="" height="50px" width="50px"></a></li>
+                <li><a href="index.html" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="../faq_page/index.html" class="nav-link px-2 text-white">FAQs</a></li>
