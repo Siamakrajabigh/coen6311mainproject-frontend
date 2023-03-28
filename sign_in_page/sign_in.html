@@ -62,47 +62,48 @@
         </div>
     </div>
     <script> 
-    var submitRegisterForm = async function() {
+        let url = 'https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile'
         var params = '?username=' + document.getElementById('username').value + 
                     '&email=' + document.getElementById('email').value +
                     '&skills=' + document.getElementById('skills').value +
                     '&categories=' + document.getElementById('categories').value;
         console.log(params);
 
-        let debugVar = null
-        let url = 'https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile'
-        let response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'text/html'
-            },
-            body: JSON.stringify(params)
-        });
+        var submitRegisterForm = async function() {
+            let debugVar = null
+            let response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/html'
+                },
+                body: JSON.stringify(params)
+            });
 
-        if (response.ok) {
-            let responseText = await response.text();
-            console.log(responseText);
-        } 
-        else {
-            alert("HTTP-Error: " + response.status);
-        }
-        // fetch(url, {
-        //     method: 'POST',
-        //     headers: {
-        //     'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(params)
-        // })
-        // .then(response =>{debugvar=response.text(); return response.text()})
-        // .then(responseData => {
-        //  // Do something with the response data
-        //  console.log(responseData)
+            if (response.ok) {
+                let responseText = await response.text();
+                console.log(responseText);
+            } 
+            else {
+                alert("HTTP-Error: " + response.status);
+            }
+            // fetch(url, {
+            //     method: 'POST',
+            //     headers: {
+            //     'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify(params)
+            // })
+            // .then(response =>{debugvar=response.text(); return response.text()})
+            // .then(responseData => {
+            //  // Do something with the response data
+            //  console.log(responseData)
 
-        // })
-        // .catch(error => {
-        //  // Handle any errors that occur during the API request
-        // });
+            // })
+            // .catch(error => {
+            //  // Handle any errors that occur during the API request
+            // });
     }
+    await submitRegisterForm();
 
     let xhr = new XMLHttpRequest()
     xhr.onload = function() {
