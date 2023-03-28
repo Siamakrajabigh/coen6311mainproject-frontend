@@ -25,6 +25,8 @@ footerTemplate.innerHTML = `
         color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
         --bs-bg-opacity: 1;
         background-color: #4f4f4f !important;
+        font-family: "Poppins", sans-serif;
+
     }
 
     .container {

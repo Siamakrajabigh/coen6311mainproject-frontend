@@ -8,7 +8,6 @@ headerTemplate.innerHTML = `
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    font-family: cursive;
   }
   @media (min-width: 768px) {
     .container {
@@ -321,7 +320,8 @@ headerTemplate.innerHTML = `
     padding: 10px 16px;
     background: #555;
     color: #4f4f4f;
-    font-family: cursive;
+    font-family: "Poppins", sans-serif;
+
 
   }
   
@@ -334,18 +334,14 @@ headerTemplate.innerHTML = `
 
                 <li><a href="index.html"><img src="../images/greengrass-removebg-preview.png" alt="" height="50px" width="50px"></a></li>
                 <li><a href="index.html" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
+                <li><a href="../search/search.html" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="../faq_page/index.html" class="nav-link px-2 text-white">FAQs</a></li>
                 <li><a href="../about_page/index.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
-            <form class="col-12 col-lg-auto me-lg-3">
-              <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-            </form>
-    
             <div class="text-end">
-              <a href="../login_page/login.html" class="btn btn-outline-primary me-2 text-white" target="_blank">Login</a>
+              <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button>
               <a href="../sign_in_page/sign_in.html" class="btn btn-warning" target="_blank">Sign-up</a>
             </div>
           </div>
@@ -366,3 +362,78 @@ class Header extends HTMLElement {
 }
 
 customElements.define('header-component', Header);
+
+var YOUR_CLIENT_ID = '449761760826-pfa1o2a0cquanh1erpeejmvv8nr1r5s2.apps.googleusercontent.com';
+      var YOUR_REDIRECT_URI = 'https://www.greengrassfreelancer.com/faq_page/index.html';
+      var fragmentString = location.hash.substring(1);
+    
+      // Parse query string to see if page request is coming from OAuth 2.0 server.
+      var params = {};
+      var regex = /([^&=]+)=([^&]*)/g, m;
+      while (m = regex.exec(fragmentString)) {
+        params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+      }
+      if (Object.keys(params).length > 0) {
+        localStorage.setItem('oauth2-test-params', JSON.stringify(params) );
+        if (params['state'] && params['state'] == 'test_login') {
+          getOauthorized();
+        }
+      }
+
+      // If there's an access token, try an API request.
+      // Otherwise, start OAuth 2.0 flow.
+      function getOauthorized() {
+        var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
+        if (params && params['access_token']) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET',
+              'https://www.googleapis.com/drive/v3/about?fields=user&' +
+              'access_token=' + params['access_token']);
+          xhr.onreadystatechange = function (e) {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              console.log(xhr.response);
+            } else if (xhr.readyState === 4 && xhr.status === 401) {
+              // Token invalid, so prompt for user permission.
+              oauth2SignIn();
+            }
+          };
+          xhr.send(null);
+        } else {
+          oauth2SignIn();
+        }
+      }
+    
+
+       /*
+       * Create form to request access token from Google's OAuth 2.0 server.
+       */
+       function oauth2SignIn() {
+        // Google's OAuth 2.0 endpoint for requesting an access token
+        var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+    
+        // Create element to open OAuth 2.0 endpoint in new window.
+        var form = document.createElement('form');
+        form.setAttribute('method', 'GET'); // Send as a GET request.
+        form.setAttribute('action', oauth2Endpoint);
+    
+        // Parameters to pass to OAuth 2.0 endpoint.
+        var params = {'client_id': "449761760826-pfa1o2a0cquanh1erpeejmvv8nr1r5s2.apps.googleusercontent.com",
+                      'redirect_uri': 'https://www.greengrassfreelancer.com/faq_page/index.html', // "https://oauth2.googleapis.com/token",
+                      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+                      'state': 'test_login',
+                      'include_granted_scopes': 'true',
+                      'response_type': 'token'};
+    
+        // Add form parameters as hidden input values.
+        for (var p in params) {
+          var input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', p);
+          input.setAttribute('value', params[p]);
+          form.appendChild(input);
+        }
+    
+        // Add form to page and submit it to open the OAuth 2.0 endpoint.
+        document.body.appendChild(form);
+        form.submit();
+     }
