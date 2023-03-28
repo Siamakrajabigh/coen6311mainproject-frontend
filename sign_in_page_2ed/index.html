@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Sign-up</title>
+	<link rel="icon" href="images/greengrass-removebg-preview.png" type="images/x-icon">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/opensans-font.css">
+	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+	<div class="page-content">
+		<div class="form-v1-content">
+			<div class="wizard-form">
+		        <form class="form-register" action="#" method="post">
+		        	<div id="form-total">
+		        		<!-- SECTION 1 -->
+			            <h2>
+			            	<p class="step-icon"><span>01</span></p>
+			            	<span class="step-text">Peronal Infomation</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<div class="wizard-header">
+									<h3 class="heading">Personal Infomation</h3>
+									<p>Please enter your infomation and proceed to the next step so we can build your accounts.  </p>
+								</div>
+								<div class="form-row">
+									<div class="form-holder">
+										<fieldset>
+											<legend>First Name</legend>
+											<input type="text" class="form-control" id="first-name" name="first-name" placeholder="First Name" required>
+										</fieldset>
+									</div>
+									<div class="form-holder">
+										<fieldset>
+											<legend>Last Name</legend>
+											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Last Name" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Your Email</legend>
+											<input type="text" name="your_email" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="example@email.com" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Phone Number</legend>
+											<input type="text" class="form-control" id="phone" name="phone" placeholder="+1 888-999-7777" required>
+										</fieldset>
+									</div>
+								</div>
+								<div class="form-row form-row-date">
+									<div class="form-holder form-holder-2">
+										<label class="special-label">Birth Date:</label>
+										<select name="Date" id="date">
+											<option value="DD" disabled selected>DD</option>
+											<option value="01">01</option>
+											<option value="02">02</option>
+											<option value="03">03</option>
+											<option value="04">04</option>
+											<option value="05">05</option>
+											<option value="06">06</option>
+											<option value="07">07</option>
+											<option value="08">08</option>
+											<option value="09">09</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+											<option value="31">31</option>
+											
+										</select>
+										<select name="Month" id="month">
+											<option value="MM" disabled selected>MM</option>
+											<option value="Jan">Jan</option>
+											<option value="Feb">Feb</option>
+											<option value="Mar">Mar</option>
+											<option value="Apr">Apr</option>
+											<option value="May">May</option>
+											<option value="Jun">Jun</option>
+											<option value="Jul">Jul</option>
+											<option value="Aug">Aug</option>
+											<option value="Sep">Sep</option>
+											<option value="Oct">Oct</option>
+											<option value="Nov">Nov</option>
+											<option value="Dec">Dec</option>
+											
+										</select>
+										<select name="year" id="year">
+											<option value="YYYY" disabled selected>YYYY</option>
+											<option value="2017">2022</option>
+											<option value="2016">2021</option>
+											<option value="2015">2020</option>
+											<option value="2014">2019</option>
+											<option value="2013">2018</option>
+											<option value="2017">2017</option>
+											<option value="2016">2016</option>
+											<option value="2015">2015</option>
+											<option value="2014">2014</option>
+											<option value="2013">2013</option>
+											<option value="2017">2012</option>
+											<option value="2016">2011</option>
+											<option value="2015">2010</option>
+											<option value="2014">2009</option>
+											<option value="2013">2008</option>
+											<option value="2017">2007</option>
+											<option value="2016">2006</option>
+											<option value="2015">2005</option>
+											<option value="2014">2004</option>
+											<option value="2013">2003</option>
+											<option value="2017">2002</option>
+											<option value="2016">2001</option>
+											<option value="2015">2000</option>
+											<option value="2014">1999</option>
+											<option value="2013">1998</option>
+											<option value="2017">1997</option>
+											<option value="2016">1996</option>
+											<option value="2015">1995</option>
+											<option value="2014">1994</option>
+											<option value="2013">1993</option>
+											<option value="2017">1992</option>
+											<option value="2016">1991</option>
+											<option value="2015">1990</option>
+											<option value="2014">1989</option>
+											<option value="2013">1988</option>											<option value="2017">2017</option>
+											<option value="2016">1987</option>
+											<option value="2015">1986</option>
+											<option value="2014">1985</option>
+											
+										</select>
+								</div>
+								
+							</div>
+							<div class="form-row">
+								<div class="form-holder form-holder-2">
+									<label class="special-label">User Type:</label>
+									<select name="Type" id="Type">
+										<option value="type" disabled selected>type</option>
+										<option value="business owner">business owner</option>
+										<option value="business povider">business provider</option>
+									</select>
+								</div>
+							</div>
+			            </section>
+						<!-- SECTION 2 -->
+			            <h2>
+			            	<p class="step-icon"><span>02</span></p>
+			            	<span class="step-text">Connect Bank Account</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<div class="wizard-header">
+									<h3 class="heading">Connect Bank Account</h3>
+									<p>Please enter your infomation and proceed to the next step so we can build your accounts.</p>
+								</div>
+								<div class="form-row">
+									<div class="form-holder form-holder-1">
+										<input type="text" name="find_bank" id="find_bank" placeholder="Find Your Bank" class="form-control" required>
+									</div>
+								</div>
+								<div class="form-row-total">
+									<div class="form-row">
+				                		<div class="form-holder form-holder-2 form-holder-3">
+				                			<input type="radio" class="radio" name="bank-1" id="bank-1" value="bank-1" checked>
+				                			<label class="bank-images label-above bank-1-label" for="bank-1">
+				                				<img src="images/form-v1-1.png" alt="bank-1">
+				                			</label>
+											<input type="radio" class="radio" name="bank-2" id="bank-2" value="bank-2">
+											<label class="bank-images label-above bank-2-label" for="bank-2">
+												<img src="images/form-v1-2.png" alt="bank-2">
+											</label>
+											<input type="radio" class="radio" name="bank-3" id="bank-3" value="bank-3">
+											<label class="bank-images label-above bank-3-label" for="bank-3">
+												<img src="images/form-v1-3.png" alt="bank-3">
+											</label>
+				                		</div>
+				                	</div>
+				                	<div class="form-row">
+				                		<div class="form-holder form-holder-2 form-holder-3">
+				                			<input type="radio" class="radio" name="bank-4" id="bank-4" value="bank-4">
+				                			<label class="bank-images bank-4-label" for="bank-4">
+				                				<img src="images/form-v1-4.png" alt="bank-4">
+				                			</label>
+											<input type="radio" class="radio" name="bank-5" id="bank-5" value="bank-5">
+											<label class="bank-images bank-5-label" for="bank-5">
+												<img src="images/form-v1-5.png" alt="bank-5">
+											</label>
+											<input type="radio" class="radio" name="bank-6" id="bank-6" value="bank-6">
+											<label class="bank-images bank-6-label" for="bank-6">
+												<img src="images/form-v1-6.png" alt="bank-6">
+											</label>
+				                		</div>
+				                	</div>
+								</div>
+							</div>
+			            </section>
+			            <!-- SECTION 3 -->
+			            <h2>
+			            	<p class="step-icon"><span>03</span></p>
+			            	<span class="step-text">Set Financial Goals</span>
+			            </h2>
+			            <section>
+			                <div class="inner">
+			                	<div class="wizard-header">
+									<h3 class="heading">Set Financial Goals</h3>
+									<p>Please enter your infomation and proceed to the next step so we can build your accounts.</p>
+								</div>
+								<div class="form-row">
+			                		<div class="form-holder form-holder-2">
+			                			<input type="radio" class="radio" name="radio1" id="plan-1" value="plan-1">
+			                			<label class="plan-icon plan-1-label" for="plan-1">
+		                					<img src="images/form-v1-icon-2.png" alt="pay-1">
+			                			</label>
+			                			<div class="plan-total">
+		                					<span class="plan-title">Specific Plan</span>
+		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
+		                				</div>
+			                			<input type="radio" class="radio" name="radio1" id="plan-2" value="plan-2">
+			                			<label class="plan-icon plan-2-label" for="plan-2">
+			                					<img src="images/form-v1-icon-2.png" alt="pay-1">
+			                			</label>
+			                			<div class="plan-total">
+		                					<span class="plan-title">Medium Plan</span>
+		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
+		                				</div>
+										<input type="radio" class="radio" name="radio1" id="plan-3" value="plan-3" checked>
+										<label class="plan-icon plan-3-label" for="plan-3">
+		                					<img src="images/form-v1-icon-3.png" alt="pay-2">
+										</label>
+										<div class="plan-total">
+		                					<span class="plan-title">Special Plan</span>
+		                					<p class="plan-text">Pellentesque nec nam aliquam sem et volutpat consequat mauris nunc congue nisi.</p>
+		                				</div>
+			                		</div>
+			                	</div>
+							</div>
+			            </section>
+		        	</div>
+		        </form>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.steps.js"></script>
+	<script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

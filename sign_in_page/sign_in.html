@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>How To Create</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">   
+    <link rel="stylesheet" href="sign_in.css">
+</head>
+<body>
+
+    <div class="login-page bg-light">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-4 offset-lg-1 mx-auto ">
+                    <div class="bg-white shadow" style="border-radius: 21px;">
+                        <div class="row">
+                            <div class="col-md-12 pe-0 ">
+                                <div class="form-left h-100 py-5 px-5 ">
+                                    <form action="" class="row g-4">
+                                        <h3 class="mb-3 text-center">Register</h3>
+                                            <div class="col-12">
+                                                <label>Firstname<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                    <input type="text" class="form-control" id="firstName" placeholder="Enter Firstname">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label>Lastname<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Lastname">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label>Username<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                    <input type="text" class="form-control" id="username" placeholder="Enter Username">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label>Password<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                                                    <input type="text" class="form-control" id="password" placeholder="Enter Password">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary px-4 float-end mt-4" onclick="submitRegisterForm()">Sign In</button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    <script> 
+    var submitRegisterForm = function() {
+        var params = '?firstName=' + document.getElementBzyId('firstName').value + 
+                    '&lastName=' + document.getElementById('lastName').value +
+                    '&username=' + document.getElementById('username').value +
+                    '&password=' + document.getElementById('password').value;
+        console.log(params);
+
+        var updateXHR = new XMLHttpRequest()
+        updateXHR.onload = function() {
+            console.log('Got back the update');
+            console.log(updateXHR.response);
+            debugger;
+            signupClick(updateXHR.response);
+        };
+        updateXHR.open('GET', '/signupAsEndUser'+params, true);
+        updateXHR.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        updateXHR.responseType = 'json'; // parses the response == JSON.parse(req.responseText);
+        updateXHR.send(null);
+    }
+    </script>
+
+    <!-- Bootstrap JS -->
+     
+</body>
+</html>
