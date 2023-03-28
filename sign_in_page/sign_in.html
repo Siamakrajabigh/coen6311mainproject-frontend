@@ -8,13 +8,62 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">   
     <link rel="stylesheet" href="sign_in.css">
-    <script> 
+</head>
+<body>
+
+    <div class="login-page bg-light">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-4 offset-lg-1 mx-auto ">
+                    <div class="bg-white shadow" style="border-radius: 21px;">
+                        <div class="row">
+                            <div class="col-md-12 pe-0 ">
+                                <div class="form-left h-100 py-5 px-5 ">
+                                    <div class="row g-4">
+                                    <!-- <form onsubmit="submitRegisterForm()" > -->
+                                        <h3 class="mb-3 text-center">Register</h3>
+                                        <div class="col-12">
+                                            <label>username<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>email<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="email" placeholder="Enter Email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>skills<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="skills" placeholder="Enter skills" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>categories<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                                                <input type="text" class="form-control" id="categories" placeholder="Enter categories" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12"> <!-- type="submit" -->
+                                            <button onclick="submitRegisterForm()" class="btn btn-primary px-4 float-end mt-4">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
         let url = 'https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile'
-        var params = '?username=' + document.getElementById('username').value + 
-                    '&email=' + document.getElementById('email').value +
-                    '&skills=' + document.getElementById('skills').value +
-                    '&categories=' + document.getElementById('categories').value;
-        console.log(params);
 
         /* var submitRegisterForm = async function() {
             let debugVar = null
@@ -52,75 +101,26 @@
             // });
         }*/
 
-        let submitRegisterForm = function() {        
-            let xhr = new XMLHttpRequest()
+        let submitRegisterForm = function() {
+            alert('HELLO!');
+            var params = '?username=' + document.getElementById('username').value + 
+                        '&email=' + document.getElementById('email').value +
+                        '&skills=' + document.getElementById('skills').value +
+                        '&categories=' + document.getElementById('categories').value;
+            console.log(params);
+            let xhr = new XMLHttpRequest();
             xhr.onload = function() {
-                console.log('Got back the update');
                 console.log(xhr.response);
-                debugger;
-                
+                console.alert('Got back the update');
             };
             xhr.open('GET', url+params, true);
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhr.responseType = 'text/html';
             xhr.send(null);
-            console.log('XHR Request sent!')
+           alert('XHR Request sent!');
         }
         
     </script>
-</head>
-<body>
-
-    <div class="login-page bg-light">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-sm-4 offset-lg-1 mx-auto ">
-                    <div class="bg-white shadow" style="border-radius: 21px;">
-                        <div class="row">
-                            <div class="col-md-12 pe-0 ">
-                                <div class="form-left h-100 py-5 px-5 ">
-                                    <form action="" class="row g-4">
-                                        <h3 class="mb-3 text-center">Register</h3>
-                                            <div class="col-12">
-                                                <label>username<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="firstName" placeholder="Enter username">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <label>email<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="lastName" placeholder="Enter Email">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <label>skills<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="username" placeholder="Enter skills">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <label>categories<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <input type="text" class="form-control" id="password" placeholder="Enter categories">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <button type="submit" class="btn btn-primary px-4 float-end mt-4" onclick="submitRegisterForm()">Sign In</button>
-                                            </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-        </div>
-    </div>
   
 </body>
 </html>
