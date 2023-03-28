@@ -16,7 +16,7 @@
                     '&categories=' + document.getElementById('categories').value;
         console.log(params);
 
-        // var submitRegisterForm = async function() {
+        /* var submitRegisterForm = async function() {
             let debugVar = null
             let response = await fetch(url, {
                 method: 'GET',
@@ -33,6 +33,7 @@
             else {
                 alert("HTTP-Error: " + response.status);
             }
+        
             // fetch(url, {
             //     method: 'POST',
             //     headers: {
@@ -49,7 +50,8 @@
             // .catch(error => {
             //  // Handle any errors that occur during the API request
             // });
-    }
+        }*/
+
         let submitRegisterForm = function() {        
             let xhr = new XMLHttpRequest()
             xhr.onload = function() {
