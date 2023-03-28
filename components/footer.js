@@ -9,7 +9,7 @@ footerTemplate.innerHTML = `
       display: flex;
       flex-shrink: 0;
       align-items: center;
-      font-family: cursive;
+      font-family: "Poppins", sans-serif;
     }
     .footer-bs{
         position: relative;
@@ -28,11 +28,11 @@ footerTemplate.innerHTML = `
     }
 
     .container {
-        padding-right: 15px;
-        padding-left: 15px;
+        padding-right: 10px;
+        padding-left: 10px;
         margin-right: auto;
         margin-left: auto;
-        margin-top: 3rem !important;
+        margin-top: 1.5rem !important;
       }
       @media (min-width: 768px) {
         .container {
@@ -64,7 +64,7 @@ footerTemplate.innerHTML = `
     .col-md-3 {
         flex: 0 0 auto;
         width: 25%;
-        column-gap:3px;
+        column-gap:1px;
     }
     .text-uppercase {
         text-transform: uppercase !important;
@@ -83,6 +83,26 @@ footerTemplate.innerHTML = `
       padding-bottom: 5px;
       box-shadow: inset 0 -2px 0 0 #333;
     }
+    .icon-bar {
+      width: 90px; /* Set a specific width */
+      background-color: #555; /* Dark-grey background */
+    }
+    
+    .icon-bar a {
+      text-align: center; /* Center-align text */
+      padding: 4px; /* Add some padding */
+      transition: all 0.3s ease; /* Add transition for hover effects */
+      color: white; /* White text color */
+      font-size: 25px; /* Increased font-size */
+    }
+    .icon-bar a:hover {
+      background-color: #000; /* Add a hover color */
+    }
+    
+    .active {
+      background-color: #04AA6D; /* Add an active/current color */
+    }
+    
   </style>
   <footer class=" footer-bs" >
         <section>
@@ -92,12 +112,11 @@ footerTemplate.innerHTML = `
                   <!-- Grid column -->
                   <div class="col-md-3">
                     <!-- Content -->
-                    <a href="#"><img src="../images/greengrass-removebg-preview.png" alt="" height="100px" width="100px"></a>
-
-                    <a href="#" class="text-white text-uppercase fw-bold " style="text-decoration: none
-                    ;">Greengrass</a>
+                    <a href="#"><img src="../images/GG.jpeg" alt="" height="100px" width="100px"></a>
+                    <h4 class="text-uppercase fw-bold">Green Grass</h4>
                     <p>
-                        What you seek, we deliver. Smart solutions to modern day problems.
+                        What you seek, we deliver. <br>
+                        Smart solutions to modern day problems.
                     </p>
                   </div>
                   <!-- Grid column -->
@@ -105,7 +124,7 @@ footerTemplate.innerHTML = `
                   <!-- Grid column -->
                   <div class="col-md-3 ">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold">Products</h6>
+                    <h4 class="text-uppercase fw-bold">Products</h4>
                     <p>
                       <a href="#!" class="text-white">Web Development</a>
                     </p>
@@ -121,7 +140,7 @@ footerTemplate.innerHTML = `
                   <!-- Grid column -->
                   <div class="col-md-3">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold">Useful links</h6>
+                    <h4 class="text-uppercase fw-bold">Useful links</h4>
         
                     <p>
                       <a href="#!" class="text-white ">Your Account</a>
@@ -141,7 +160,7 @@ footerTemplate.innerHTML = `
                   <!-- Grid column -->
                   <div class="col-md-3">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <h4 class="text-uppercase fw-bold">Contact</h4>
                     <p><i class="fas fa-home mr-3"></i> Montreal,Quebec, Canada</p>
                     <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
                     <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>

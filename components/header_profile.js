@@ -1,4 +1,3 @@
-
 const headerTemplate = document.createElement('template');
 
 headerTemplate.innerHTML = `
@@ -321,7 +320,7 @@ headerTemplate.innerHTML = `
     padding: 10px 16px;
     background: #555;
     color: #4f4f4f;
-    "Poppins", sans-serif;
+    font-family: cursive;
 
   }
   .icon-bar {
@@ -331,11 +330,12 @@ headerTemplate.innerHTML = `
   
   .icon-bar a {
     text-align: center; /* Center-align text */
-    padding: 4px; /* Add some padding */
+    padding: 10px; /* Add some padding */
     transition: all 0.3s ease; /* Add transition for hover effects */
     color: white; /* White text color */
     font-size: 25px; /* Increased font-size */
   }
+  
   .icon-bar a:hover {
     background-color: #000; /* Add a hover color */
   }
@@ -344,28 +344,24 @@ headerTemplate.innerHTML = `
     background-color: #04AA6D; /* Add an active/current color */
   }
   
-  
   </style>
   <header class="header">
         <div class="container">
           <div class="d-flex align-items-center justify-content-center">
     
             <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center ">
+                
                 <li><a href="landing_page.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
-                <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="../landing_page/landing_page.html" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="../about_page/abot_page.html" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
-            <form class="col-12 col-lg-auto me-lg-3">
-              <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-            </form>
-    
-            <div class="text-end">
-              <a href="../login_page/login.html" class="btn btn-outline-primary me-2 text-white" target="_blank">Login</a>
-              <a href="../sign_in_page/sign_in.html" class="btn btn-warning" target="_blank">Sign-up</a>
+            <div class="icon-bar">
+              <a href="../profile_page/profile.html" ><i class=" fa fa-user"></i></a>
+              <a href="#"><i class=" fa fa-bell"></i></a>
             </div>
           </div>
         </div>
@@ -376,12 +372,15 @@ class Header extends HTMLElement {
   constructor() {
     super();
   }
-
   connectedCallback() {
+    const fontAwesome = document.querySelector('link[href*="font-awesome"]');
     const shadowRoot = this.attachShadow({ mode: 'closed' });
+    if (fontAwesome) {
+      shadowRoot.appendChild(fontAwesome.cloneNode());
+    }
 
     shadowRoot.appendChild(headerTemplate.content);
   }
 }
 
-customElements.define('header-component', Header);
+customElements.define('header_profile-component', Header);
