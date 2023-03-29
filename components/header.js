@@ -355,8 +355,8 @@ headerTemplate.innerHTML = `
                 <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
-                <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="../about_page/abot_page.html" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="../faq_page/index.html" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="../about_page/index.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
             <form class="col-12 col-lg-auto me-lg-3">
