@@ -37,17 +37,17 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>skills<span class="text-danger">*</span></label>
+                                            <label>firstname<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" id="skills" placeholder="Enter skills" />
+                                                <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" />
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>categories<span class="text-danger">*</span></label>
+                                            <label>lastname<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="text" class="form-control" id="categories" placeholder="Enter categories" />
+                                                <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" />
                                             </div>
                                         </div>
                                         <div class="col-12"> <!-- type="submit" -->
@@ -124,10 +124,10 @@
                 "username":document.getElementById('username').value,
                 "email":document.getElementById('email').value,
                 "skills":[
-                document.getElementById('skills').value
+                document.getElementById('firstname').value
                 ],
                 "categories":[
-                document.getElementById('categories').value
+                document.getElementById('lastname').value
                 ]
             };
 
@@ -142,6 +142,7 @@
             .then(responseData => {
             // Do something with the response data
             console.log(responseData)
+            alert("Your account created!, Now you can go to login page")
             })
             .catch(error => {
             // Handle any errors that occur during the API request
