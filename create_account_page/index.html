@@ -23,10 +23,17 @@
                                     <!-- <form onsubmit="submitRegisterForm()" > -->
                                         <h3 class="mb-3 text-center">Create Account</h3>
                                         <div class="col-12">
-                                            <label>username<span class="text-danger">*</span></label>
+                                            <label>firstname<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
+                                                <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>lastname<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" />
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -37,17 +44,17 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>firstname<span class="text-danger">*</span></label>
+                                            <label>username<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" />
+                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>lastname<span class="text-danger">*</span></label>
+                                            <label>password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" />
+                                                <input type="text" class="form-control" id="password" placeholder="Enter password" />
                                             </div>
                                         </div>
                                         <div class="col-12"> <!-- type="submit" -->
@@ -121,14 +128,11 @@
         // }
         let submitRegisterForm = function() {
             const data = { 
+                "firstname":document.getElementById('firstname').value,
+                "lastname":document.getElementById('lastname').value,
                 "username":document.getElementById('username').value,
-                "email":document.getElementById('email').value,
-                "skills":[
-                document.getElementById('firstname').value
-                ],
-                "categories":[
-                document.getElementById('lastname').value
-                ]
+                "password":document.getElementById('password').value,
+                
             };
 
             fetch(url, {
