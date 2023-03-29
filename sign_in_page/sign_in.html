@@ -121,13 +121,13 @@
         // }
         let submitRegisterForm = function() {
             const data = { 
-                "username":"mitra",
-                "email":"svgyg@gmail.com",
+                "username":document.getElementById('username').value,
+                "email":document.getElementById('email').value,
                 "skills":[
-                "C++"
+                document.getElementById('skills').value
                 ],
                 "categories":[
-                "backend"
+                document.getElementById('categories').value
                 ]
             };
 
