@@ -57,6 +57,14 @@
                                                 <input type="text" class="form-control" id="password" placeholder="Enter password" />
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <label>User Type<span class="text-danger">*</span></label>
+                                            <select name="type" id="type">
+                                                <option value="type" disabled selected>type</option>
+                                                <option value="business owner">business owner</option>
+                                                <option value="business povider">service provider</option>
+                                            </select>
+                                        </div>
                                         <div class="col-12"> <!-- type="submit" -->
                                             <button onclick="submitRegisterForm()" class="btn btn-primary px-4 float-end mt-4">Submit</button>
                                         </div>
@@ -132,7 +140,7 @@
                 "lastname":document.getElementById('lastname').value,
                 "username":document.getElementById('username').value,
                 "password":document.getElementById('password').value,
-                
+                "type":document.getElementById('type').value
             };
 
             fetch(url, {
