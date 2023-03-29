@@ -101,26 +101,54 @@
             // });
         }*/
 
+        // let submitRegisterForm = function() {
+        //     alert('HELLO!');
+        //     var params = '?username=' + document.getElementById('username').value + 
+        //                 '&email=' + document.getElementById('email').value +
+        //                 '&skills=' + document.getElementById('skills').value +
+        //                 '&categories=' + document.getElementById('categories').value;
+        //     console.log(params);
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onload = function() {
+        //         console.log(xhr.response);
+        //         console.alert('Got back the update');
+        //     };
+        //     xhr.open('GET', url+params, true);
+        //     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        //     xhr.responseType = 'text/html';
+        //     xhr.send(null);
+        //    alert('XHR Request sent!');
+        // }
         let submitRegisterForm = function() {
-            alert('HELLO!');
-            var params = '?username=' + document.getElementById('username').value + 
-                        '&email=' + document.getElementById('email').value +
-                        '&skills=' + document.getElementById('skills').value +
-                        '&categories=' + document.getElementById('categories').value;
-            console.log(params);
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-                console.log(xhr.response);
-                console.alert('Got back the update');
+            const data = { 
+                "username":"mitra",
+                "email":"svgyg@gmail.com",
+                "skills":[
+                "C++"
+                ],
+                "categories":[
+                "backend"
+                ]
             };
-            xhr.open('GET', url+params, true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.responseType = 'text/html';
-            xhr.send(null);
-           alert('XHR Request sent!');
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(responseData => {
+            // Do something with the response data
+            console.log(responseData)
+            })
+            .catch(error => {
+            // Handle any errors that occur during the API request
+            });
         }
-        
+
     </script>
-  
+
 </body>
 </html>
