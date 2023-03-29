@@ -365,7 +365,7 @@ headerTemplate.innerHTML = `
     
             <div class="text-end">
               <a href="../login_page/login.html" class="btn btn-outline-primary me-2 text-white" target="_blank">Login</a>
-              <a href="../create_account_page/create_account.html" class="btn btn-warning" target="_blank">Create Account</a>
+              <a href="../create_account_page/index.html" class="btn btn-warning" target="_blank">Create Account</a>
             </div>
           </div>
         </div>
