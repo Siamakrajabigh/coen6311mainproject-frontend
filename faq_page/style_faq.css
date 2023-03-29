@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
 
 * {
-  font-family: cursive;
+  font-family: "Poppins", sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -38,6 +38,7 @@ body {
 .question {
   font-size: 1.2rem;
   font-weight: 600;
+  font-family: "Poppins", sans-serif;
   padding: 20px 80px 20px 20px;
   position: relative;
   display: flex;
@@ -68,7 +69,10 @@ body {
   line-height: 1.5rem;
 }
 
-.question.active + .answercont {
+.question.active{
+
+} 
+.answercont {
 }
 
 @media screen and (max-width: 790px){
