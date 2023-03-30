@@ -61,8 +61,8 @@
                                             <label>User Type<span class="text-danger">*</span></label>
                                             <select name="type" id="type">
                                                 <option value="type" disabled selected>type</option>
-                                                <option value="business owner">business owner</option>
-                                                <option value="business povider">service provider</option>
+                                                <option value="client">client</option>
+                                                <option value="service provider">service provider</option>
                                             </select>
                                         </div>
                                         <div class="col-12"> <!-- type="submit" -->
@@ -138,6 +138,7 @@
             const data = { 
                 "firstname":document.getElementById('firstname').value,
                 "lastname":document.getElementById('lastname').value,
+                "email":document.getElementById('email').value,
                 "username":document.getElementById('username').value,
                 "password":document.getElementById('password').value,
                 "type":document.getElementById('type').value
