@@ -104,22 +104,22 @@
                         <div class="row">
                             <div class="col-md-12 pe-0 ">
                                 <div class="form-left text-center h-100 py-5 px-5">
-                                    <form action="" class="row g-4">
+                                    <div action="" class="row g-4">
                                         
                                         <h3 class="mb-3 text-center">Login Now</h3>
                                             <div class="col-12">
-                                                <label>Username<span class="text-danger">*</span></label>
+                                                <label>username<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" placeholder="Enter Username">
+                                                    <input type="text" class="form-control" id="username" placeholder="Enter Username">
                                                 </div>
                                             </div>
 
                                             <div class="col-12">
-                                                <label>Password<span class="text-danger">*</span></label>
+                                                <label>password<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                    <input type="text" class="form-control" placeholder="Enter Password">
+                                                    <input type="text" class="form-control" id="password" placeholder="Enter Password">
                                                 </div>
                                             </div>
 
@@ -135,10 +135,10 @@
                                             </div>
 
                                             <div class="col-12">
-                                                <button type="submit" class="btn btn-primary px-4 float-center mt-4">login</button>
+                                                <button onclick="submitLogInForm()" class="btn btn-primary px-4 float-center mt-4">login</button>
                                                 <!-- <input type="submit" id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-primary px-4 float-left mt-4" >Google login</input> -->
                                             </div>
-                                    </form>
+                                          </div>
                                     <div class="col-12">
                                         <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-primary px-4 float-center mt-4" >Google login</button>
                                     </div>
@@ -152,6 +152,34 @@
     </div>
 
     <!-- Bootstrap JS -->
-     
+  
+  <script>
+    let url = 'https://coen6311-380422.nn.r.appspot.com/login'
+    let submitLogInForm = function() {
+            const data = { 
+                "username":document.getElementById('username').value,
+                "password":document.getElementById('password').value
+             
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(responseData => {
+            // Do something with the response data
+            console.log(responseData)
+            console.log(responseData.firstName)
+           
+            })
+            .catch(error => {
+            // Handle any errors that occur during the API request
+            });
+        }
+  </script>
 </body>
 </html>
