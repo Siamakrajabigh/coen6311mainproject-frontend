@@ -13,8 +13,28 @@
     <!--common header and footer-->
     <script src="../components/header_profile.js" type="text/javascript" defer></script>
     <script src="../components/footer.js"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const accessToken = urlParams.get('access_token');
 
+      // make API request to Google userinfo endpoint
+      fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+        headers: {
+          'Authorization': 'Bearer ' + accessToken
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        const emailAddress = data.email;
+        // do something with the email address
+      })
+      .catch(error => {
+        console.error('Error fetching user info:', error);
+      });
 
+    </script>
+    
+    
 
 </head>
 <body>
@@ -28,14 +48,12 @@
                         <div class="p-4">
                             <!--<svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
                             -->
-                            <img src="../images/Faroe-Islands-2018-19-Final.webp" class="rounded-circle" alt="" width="140" height="140">
+                            <img src="../images/dummy-profile-pic.png" class="rounded-circle" alt="" width="140" height="140">
                             
-                            <h4 class="fw-normal">Username</h4>
-                            <h2 class="fw-normal">Personal Details</h2>
-                            <p>Name: <br>
-                               Mail ID: <br>
-                               Skills: <br>
-                            </p>
+                            <div id="personal-info">
+                    
+
+                            </div>
                         <h4 class="fst-normal">Settings:</h4>
                         <ol class="list-unstyled mb-0">
                           <li><a href="#">Edit Profile</a></li>

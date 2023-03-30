@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="icon" href="images/greengrass-removebg-preview.png" type="images/x-icon">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">   
+    <link rel="stylesheet" href="login.css">
+<script>
+    var YOUR_CLIENT_ID = '449761760826-pfa1o2a0cquanh1erpeejmvv8nr1r5s2.apps.googleusercontent.com';
+      var YOUR_REDIRECT_URI = 'https://www.greengrassfreelancer.com/profile_page/index.html';
+      var fragmentString = location.hash.substring(1);
+    
+      // Parse query string to see if page request is coming from OAuth 2.0 server.
+      var params = {};
+      var regex = /([^&=]+)=([^&]*)/g, m;
+      while (m = regex.exec(fragmentString)) {
+        params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+      }
+      if (Object.keys(params).length > 0) {
+        localStorage.setItem('oauth2-test-params', JSON.stringify(params) );
+        if (params['state'] && params['state'] == 'test_login') {
+          getOauthorized();
+        }
+      }
+
+      // If there's an access token, try an API request.
+      // Otherwise, start OAuth 2.0 flow.
+      function getOauthorized() {
+        var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
+        if (params && params['access_token']) {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET',
+              'https://www.googleapis.com/drive/v3/about?fields=user&' +
+              'access_token=' + params['access_token']);
+          xhr.onreadystatechange = function (e) {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              console.log(xhr.response);
+            } else if (xhr.readyState === 4 && xhr.status === 401) {
+              // Token invalid, so prompt for user permission.
+              oauth2SignIn();
+            }
+          };
+          xhr.send(null);
+        } else {
+          oauth2SignIn();
+        }
+      }
+    
+
+       /*
+       * Create form to request access token from Google's OAuth 2.0 server.
+       */
+       function oauth2SignIn() {
+        // Google's OAuth 2.0 endpoint for requesting an access token
+        var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+    
+        // Create element to open OAuth 2.0 endpoint in new window.
+        var form = document.createElement('form');
+        form.setAttribute('method', 'GET'); // Send as a GET request.
+        form.setAttribute('action', oauth2Endpoint);
+    
+        // Parameters to pass to OAuth 2.0 endpoint.
+        var params = {'client_id': "449761760826-pfa1o2a0cquanh1erpeejmvv8nr1r5s2.apps.googleusercontent.com",
+                      'redirect_uri': 'https://www.greengrassfreelancer.com/profile_page/index.html', // "https://oauth2.googleapis.com/token",
+                      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+                      'state': 'test_login',
+                      'include_granted_scopes': 'true',
+                      'response_type': 'token'};
+    
+        // Add form parameters as hidden input values.
+        for (var p in params) {
+          var input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', p);
+          input.setAttribute('value', params[p]);
+          form.appendChild(input);
+        }
+    
+        // Add form to page and submit it to open the OAuth 2.0 endpoint.
+        document.body.appendChild(form);
+        form.submit();
+
+     }
+
+      // document.getElementById("sign-up").onclick = function () {
+      //   location.href = "https://www.greengrassfreelancer.com/sign_in.html";
+      // }
+ </script>
+    
+ 
+</head>
+<body>
+
+    <div class="login-page bg-light">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-sm-4 offset-lg-1 mx-auto ">
+                    <div class="bg-white shadow" style="border-radius: 21px;">
+                        <div class="row">
+                            <div class="col-md-12 pe-0 ">
+                                <div class="form-left text-center h-100 py-5 px-5">
+                                    <form action="" class="row g-4">
+                                        
+                                        <h3 class="mb-3 text-center">Login Now</h3>
+                                            <div class="col-12">
+                                                <label>Username<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                    <input type="text" class="form-control" placeholder="Enter Username">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <label>Password<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                                                    <input type="text" class="form-control" placeholder="Enter Password">
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="col-sm-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                                                    <label class="form-check-label" for="inlineFormCheck">Remember me</label>
+                                                </div>
+                                            </div> -->
+
+                                            <div class="col-sm-6">
+                                                <a href="#" class="float-end text-primary">Forgot Password?</a>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary px-4 float-center mt-4">login</button>
+                                                <!-- <input type="submit" id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-primary px-4 float-left mt-4" >Google login</input> -->
+                                            </div>
+                                    </form>
+                                    <div class="col-12">
+                                        <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-primary px-4 float-center mt-4" >Google login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+     
+</body>
+</html>

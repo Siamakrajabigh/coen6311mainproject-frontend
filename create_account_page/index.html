@@ -23,10 +23,17 @@
                                     <!-- <form onsubmit="submitRegisterForm()" > -->
                                         <h3 class="mb-3 text-center">Create Account</h3>
                                         <div class="col-12">
-                                            <label>username<span class="text-danger">*</span></label>
+                                            <label>firstname<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
+                                                <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>lastname<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" />
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -37,18 +44,26 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>skills<span class="text-danger">*</span></label>
+                                            <label>username<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" id="skills" placeholder="Enter skills" />
+                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>categories<span class="text-danger">*</span></label>
+                                            <label>password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="text" class="form-control" id="categories" placeholder="Enter categories" />
+                                                <input type="text" class="form-control" id="password" placeholder="Enter password" />
                                             </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>User Type<span class="text-danger">*</span></label>
+                                            <select name="type" id="type">
+                                                <option value="type" disabled selected>type</option>
+                                                <option value="client">client</option>
+                                                <option value="service provider">service provider</option>
+                                            </select>
                                         </div>
                                         <div class="col-12"> <!-- type="submit" -->
                                             <button onclick="submitRegisterForm()" class="btn btn-primary px-4 float-end mt-4">Submit</button>
@@ -63,7 +78,7 @@
         </div>
     </div>
     <script>
-        let url = 'https://coen6311-380422.nn.r.appspot.com/createServiceProviderProfile'
+        let url = 'https://coen6311-380422.nn.r.appspot.com/createAccount'
 
         /* var submitRegisterForm = async function() {
             let debugVar = null
@@ -121,14 +136,12 @@
         // }
         let submitRegisterForm = function() {
             const data = { 
-                "username":document.getElementById('username').value,
+                "firstname":document.getElementById('firstname').value,
+                "lastname":document.getElementById('lastname').value,
                 "email":document.getElementById('email').value,
-                "skills":[
-                document.getElementById('skills').value
-                ],
-                "categories":[
-                document.getElementById('categories').value
-                ]
+                "username":document.getElementById('username').value,
+                "password":document.getElementById('password').value,
+                "type":document.getElementById('type').value
             };
 
             fetch(url, {
@@ -142,6 +155,7 @@
             .then(responseData => {
             // Do something with the response data
             console.log(responseData)
+            alert("Your account created!, Now you can go to login page")
             })
             .catch(error => {
             // Handle any errors that occur during the API request
