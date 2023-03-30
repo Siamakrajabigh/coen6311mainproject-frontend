@@ -47,8 +47,9 @@
       .then(response => response.text())
       .then(responseData => {
       // Do something with the response data
-      const name = responseData.name
-      console.log(name)
+      console.log(responseData)
+      // const name = responseData.name
+      // console.log(name)
       })
       .catch(error => {
       // Handle any errors that occur during the API request
