@@ -344,8 +344,8 @@ headerTemplate.innerHTML = `
     background-color: #04AA6D; /* Add an active/current color */
   }
   
-  
   </style>
+  
   <header class="header">
         <div class="container">
           <div class="d-flex align-items-center justify-content-center">
@@ -356,7 +356,7 @@ headerTemplate.innerHTML = `
                 <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="../about_page/index.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
             <form class="col-12 col-lg-auto me-lg-3">
