@@ -33,6 +33,27 @@
       });
 
     </script>
+    <script>
+      const email = emailAddress
+      const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
+
+      fetch(url, {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(email)
+      })
+      .then(response => response.text())
+      .then(responseData => {
+      // Do something with the response data
+      const name = responseData.name
+      console.log(name)
+      })
+      .catch(error => {
+      // Handle any errors that occur during the API request
+      });
+    </script>
 
 
 </head>
