@@ -151,17 +151,23 @@
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(responseData => {
             // Do something with the response data
             console.log(responseData)
-            alert("Your account created!, Now you can go to login page")
+            console.log(responseData.type)
+            alert("Your account created!, Now you will redirect you to your profile page")
+            if (responseData.type == "service provider") {
+                console.log(responseData.type)
+            window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+            }
             })
             .catch(error => {
             // Handle any errors that occur during the API request
             });
+            
         }
-
+            
     </script>
 
 </body>
