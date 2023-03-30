@@ -14,16 +14,15 @@
     <script src="../components/header_profile.js" type="text/javascript" defer></script>
     <script src="../components/footer.js"></script>
     <script>
-      var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
-      if (params && params['access_token']) {
-        const url = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${params['access_token']}`;
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            const email = data.email;
-            console.log(email);
-          });
-      }
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("access_token");
+      const url = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${token}`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const email = data.email;
+          console.log(email);
+  });
     </script>
 
 
