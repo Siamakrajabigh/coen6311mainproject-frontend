@@ -174,12 +174,19 @@
             // Do something with the response data
             console.log(responseData)
             console.log(responseData.firstName)
-           
+            if (responseData.type == "admin") {
+            window.location.href = "https://www.greengrassfreelancer.com/admin_page/index.html";
+            }
+            else {
+              window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+            }
             })
             .catch(error => {
             // Handle any errors that occur during the API request
             });
-        }
+            
+            }
+          
   </script>
 </body>
 </html>
