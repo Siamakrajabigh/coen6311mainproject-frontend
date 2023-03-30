@@ -17,13 +17,17 @@ fetch(url, {
     body: JSON.stringify(data)
 })
 .then(response => response.json())
-.then(responseData => {
-// Do something with the response data
-console.log(responseData)
-console.log(responseData.firstName)
-// const name = responseData.name
-// console.log(name)
+.then(data => {
+  displayData(data);
 })
-.catch(error => {
-// Handle any errors that occur during the API request
-});
+
+function displayData(data) {
+    // Get the HTML element with the ID 'api-data'
+    const apiDataElement = document.getElementById('personal-info');
+  
+    // Create a list item for the name and email
+    const li = document.createElement('li');
+    const fullName = `${data.firstName} ${data.lastName}`;
+    li.innerHTML = `Name: ${fullName}<br>Email: ${data.email}`;
+    apiDataElement.appendChild(li);
+  }

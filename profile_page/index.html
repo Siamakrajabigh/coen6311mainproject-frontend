@@ -33,33 +33,7 @@
       });
 
     </script>
-    <script>
-      const data = {
-
-        "email" : "Mitrash@gmail.com"
-      };
-       
-      const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
-
-      fetch(url, {
-          method: 'POST',
-          headers: {
-          'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(responseData => {
-      // Do something with the response data
-      console.log(responseData)
-      console.log(responseData.firstName)
-      // const name = responseData.name
-      // console.log(name)
-      })
-      .catch(error => {
-      // Handle any errors that occur during the API request
-      });
-    </script>
+    
     
 
 </head>
@@ -76,12 +50,10 @@
                             -->
                             <img src="../images/dummy-profile-pic.png" class="rounded-circle" alt="" width="140" height="140">
                             
-                            <h4 class="fw-normal">Username : </h4>
-                            <h2 class="fw-normal">Personal Details</h2>
-                            <p>Name: <br>
-                               Mail ID: <br>
-                               Skills: <br>
-                            </p>
+                            <div id="personal-info">
+                    
+
+                            </div>
                         <h4 class="fst-normal">Settings:</h4>
                         <ol class="list-unstyled mb-0">
                           <li><a href="#">Edit Profile</a></li>
