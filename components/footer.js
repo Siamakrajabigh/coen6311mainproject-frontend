@@ -3,6 +3,7 @@ const footerTemplate = document.createElement('template');
 footerTemplate.innerHTML = `
   <style>
     footer {
+      background-color: black;
       height: auto;
       padding: 0 10px;
       list-style: none;
@@ -24,7 +25,7 @@ footerTemplate.innerHTML = `
         --bs-text-opacity: 1;
         color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
         --bs-bg-opacity: 1;
-        background-color: #4f4f4f !important;
+        background-color: black !important;
     }
 
     .container {
