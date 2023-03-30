@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>How To Create</title>
+    <title>Create Account</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">   
-    <link rel="stylesheet" href="sign_in.css">
+    <link rel="stylesheet" href="create_account.css">
 </head>
 <body>
 
@@ -21,12 +21,19 @@
                                 <div class="form-left h-100 py-5 px-5 ">
                                     <div class="row g-4">
                                     <!-- <form onsubmit="submitRegisterForm()" > -->
-                                        <h3 class="mb-3 text-center">Register</h3>
+                                        <h3 class="mb-3 text-center">Create Account</h3>
                                         <div class="col-12">
-                                            <label>username<span class="text-danger">*</span></label>
+                                            <label>firstname<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
+                                                <input type="text" class="form-control" id="firstname" placeholder="Enter firstname" />
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>lastname<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                                <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" />
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -37,18 +44,26 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>skills<span class="text-danger">*</span></label>
+                                            <label>username<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" id="skills" placeholder="Enter skills" />
+                                                <input type="text" class="form-control" id="username" placeholder="Enter username" />
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>categories<span class="text-danger">*</span></label>
+                                            <label>password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="text" class="form-control" id="categories" placeholder="Enter categories" />
+                                                <input type="text" class="form-control" id="password" placeholder="Enter password" />
                                             </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>User Type<span class="text-danger">*</span></label>
+                                            <select name="type" id="type">
+                                                <option value="type" disabled selected>type</option>
+                                                <option value="client">client</option>
+                                                <option value="service provider">service provider</option>
+                                            </select>
                                         </div>
                                         <div class="col-12"> <!-- type="submit" -->
                                             <button onclick="submitRegisterForm()" class="btn btn-primary px-4 float-end mt-4">Submit</button>
@@ -101,26 +116,53 @@
             // });
         }*/
 
+        // let submitRegisterForm = function() {
+        //     alert('HELLO!');
+        //     var params = '?username=' + document.getElementById('username').value + 
+        //                 '&email=' + document.getElementById('email').value +
+        //                 '&skills=' + document.getElementById('skills').value +
+        //                 '&categories=' + document.getElementById('categories').value;
+        //     console.log(params);
+        //     let xhr = new XMLHttpRequest();
+        //     xhr.onload = function() {
+        //         console.log(xhr.response);
+        //         console.alert('Got back the update');
+        //     };
+        //     xhr.open('GET', url+params, true);
+        //     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        //     xhr.responseType = 'text/html';
+        //     xhr.send(null);
+        //    alert('XHR Request sent!');
+        // }
         let submitRegisterForm = function() {
-            alert('HELLO!');
-            var params = '?username=' + document.getElementById('username').value + 
-                        '&email=' + document.getElementById('email').value +
-                        '&skills=' + document.getElementById('skills').value +
-                        '&categories=' + document.getElementById('categories').value;
-            console.log(params);
-            let xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-                console.log(xhr.response);
-                console.alert('Got back the update');
+            const data = { 
+                "firstname":document.getElementById('firstname').value,
+                "lastname":document.getElementById('lastname').value,
+                "email":document.getElementById('email').value,
+                "username":document.getElementById('username').value,
+                "password":document.getElementById('password').value,
+                "type":document.getElementById('type').value
             };
-            xhr.open('GET', url+params, true);
-            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-            xhr.responseType = 'text/html';
-            xhr.send(null);
-           alert('XHR Request sent!');
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(responseData => {
+            // Do something with the response data
+            console.log(responseData)
+            alert("Your account created!, Now you can go to login page")
+            })
+            .catch(error => {
+            // Handle any errors that occur during the API request
+            });
         }
-        
+
     </script>
-  
+
 </body>
 </html>

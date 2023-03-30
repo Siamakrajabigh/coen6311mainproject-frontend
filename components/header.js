@@ -351,12 +351,12 @@ headerTemplate.innerHTML = `
           <div class="d-flex align-items-center justify-content-center">
     
             <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center ">
-                <li><a href="landing_page.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
+                <li><a href="index.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
                 <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
-                <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="../about_page/abot_page.html" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="../faq_page/index.html" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="../about_page/index.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
             <form class="col-12 col-lg-auto me-lg-3">
@@ -365,7 +365,7 @@ headerTemplate.innerHTML = `
     
             <div class="text-end">
               <a href="../login_page/login.html" class="btn btn-outline-primary me-2 text-white" target="_blank">Login</a>
-              <a href="../sign_in_page/sign_in.html" class="btn btn-warning" target="_blank">Sign-up</a>
+              <a href="../create_account_page/index.html" class="btn btn-warning" target="_blank">Create Account</a>
             </div>
           </div>
         </div>
