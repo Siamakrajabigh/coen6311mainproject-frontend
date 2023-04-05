@@ -323,8 +323,42 @@ headerTemplate.innerHTML = `
     color: #f4ff;
     font-family: "Poppins", sans-serif;
   }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: lightgrey;
+    min-width: 10px;
+    width: 180px;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: #px #px;
+    text-decoration: none;
+    display: block;
+   
+  }
+  
+  .dropbtn {
+    background-color: black;
+    color: white;
+    padding: #px;
+    font-size: #px;
+    border: none;
+  }
+
+  .dropdown-content a:hover {background-color: white;}
+  .dropdown:hover .dropdown-content {display: block;}
+  .dropdown:hover .dropbtn {background-color: grey;}
+
   .icon-bar {
-    width: 90px; /* Set a specific width */
+    width: 200px; /* Set a specific width */
     background-color: black; /* Dark-grey background */
   }
   
@@ -333,7 +367,7 @@ headerTemplate.innerHTML = `
     padding: 10px; /* Add some padding */
     transition: all 0.3s ease; /* Add transition for hover effects */
     color: white; /* White text color */
-    font-size: 25px; /* Increased font-size */
+    font-size: 24px; /* Increased font-size */
   }
   
   .icon-bar a:hover {
@@ -343,6 +377,7 @@ headerTemplate.innerHTML = `
   .active {
     background-color: #04AA6D; /* Add an active/current color */
   }
+
   
   </style>
   <header class="header">
@@ -358,20 +393,32 @@ headerTemplate.innerHTML = `
             <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
             <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
-    
             <div class="icon-bar">
-              <a href="../profile_page/profile.html" ><i class=" fa fa-user"></i></a>
-              <a href="#"><i class=" fa fa-bell"></i></a>
+        
+            <div class="dropdown">
+            <button>Profile Options<i class=" fa fa-user" id="userIcon"></i></button>
+            <div class="dropdown-content">
+            <a href="../profile_page/index.html">View Profile</a>
+            <a href="../edit_profile/index.html">Edit Profile</a>
+            <a href="https://www.youtube.com/user/hubspot">See Ratings</a>
+            <a href="../index.html">Log Out</a>
+
             </div>
+            </div>
+            </div>
+
           </div>
         </div>
     </header>
 `;
 
+
+
 class Header extends HTMLElement {
   constructor() {
     super();
   }
+
   connectedCallback() {
     const fontAwesome = document.querySelector('link[href*="font-awesome"]');
     const shadowRoot = this.attachShadow({ mode: 'closed' });
@@ -381,6 +428,9 @@ class Header extends HTMLElement {
 
     shadowRoot.appendChild(headerTemplate.content);
   }
+
 }
 
 customElements.define('header_profile-component', Header);
+
+
