@@ -2,26 +2,24 @@
 //       .then(response => response.json())
 //       .then(json => console.log(json))
 
-const data = {
 
-    "email" : "shubhha.sbj@gmail.com"
-    };
     
     const url = 'https://coen6311-380422.nn.r.appspot.com/updateServiceProviderSkills'
     
     let submitRegisterForm = function() 
     {
-        // create an array of skills by splitting the input string by comma
-        const skills = document.getElementById('skills').value.split(','); 
-        const data = {
-          "username": document.getElementById('username').value,
-          "skills": skills
-        };
+        var data = {
 
-    fetch(url, {
-        method: 'POST',
+          "username":"shubha",
+          "skills":[
+               "python"
+          ]
+            };
+
+    fetch("https://coen6311-380422.nn.r.appspot.com/updateServiceProviderSkills", {
+        method: "POST",
         headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
     })
