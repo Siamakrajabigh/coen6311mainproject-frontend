@@ -3,7 +3,6 @@ const headerTemplate = document.createElement('template');
 headerTemplate.innerHTML = `
   <style>
   .container {
-    background-color: black;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -318,14 +317,15 @@ headerTemplate.innerHTML = `
   /*Sticky Header*/
   /* Style the header */
   .header {
-    padding: 5px 5px;
-    background: black;
-    color: #f4ff;
-    font-family: "Poppins", sans-serif;
+    padding: 10px 16px;
+    background: #555;
+    color: #4f4f4f;
+    font-family: cursive;
+
   }
   .icon-bar {
     width: 90px; /* Set a specific width */
-    background-color: black; /* Dark-grey background */
+    background-color: #555; /* Dark-grey background */
   }
   
   .icon-bar a {
@@ -351,12 +351,12 @@ headerTemplate.innerHTML = `
     
             <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center ">
                 
-            <li><a href="../index.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
-            <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
-            <li><a href="../search/search.html" class="nav-link px-2 text-white">Explore</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
-            <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
-            <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="landing_page.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
+                <li><a href="../landing_page/landing_page.html" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
+                <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
             <div class="icon-bar">
