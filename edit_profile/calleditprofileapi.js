@@ -1,20 +1,13 @@
-// fetch('https://coen6311-380422.nn.r.appspot.com/rateAServiceProvider')
-//       .then(response => response.json())
-//       .then(json => console.log(json))
+const form = document.getElementById("apiForm");
+    const endpoint = "https://coen6311-380422.nn.r.appspot.com/createNewServiceRequestForEndUser";
 
+    form.addEventListener("submit", event => {
+      event.preventDefault();
 
-    
-    const url = 'https://coen6311-380422.nn.r.appspot.com/updateServiceProviderSkills'
-    
-    let submitRegisterForm = function() 
-    {
-        var data = {
-
-          "username":"shubha",
-          "skills":[
-               "python"
-          ]
-            };
+      const data = {
+        "username": form.username.value,
+        "skills": form.requiredSkills.value.split(",")
+      };
 
     fetch("https://coen6311-380422.nn.r.appspot.com/updateServiceProviderSkills", {
         method: "POST",
@@ -22,12 +15,16 @@
         "Content-Type": "application/json",
         },
         body: JSON.stringify(data)
+  
     })
     .then(response => response.json())
-    .then(data => {
-      displayData(data);
-     
-    })
+        .then(data => {
+          console.log("API response:", data);
+        })
+        .catch(error => {
+          console.error("Error sending data:", error);
+        });
+      });
     
     function displayData(data) {
         // Get the HTML element with the ID 'api-data'
@@ -40,6 +37,4 @@
         li.innerHTML = `Skills: ${data.skills}<br> Category: ${data.categories}`
         apiDataElement.appendChild(li);
       }
-
-    }
     

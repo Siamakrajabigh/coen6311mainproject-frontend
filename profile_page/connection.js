@@ -7,18 +7,7 @@ var data = {
 "email" : "shubha.sbj@gmail.com"
 };
 
-const url = 'https://coen6311-380422.nn.r.appspot.com/FindAUser'
-
-fetch(url, {
-  method: 'POST',
-  headers: {
-  'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-})
-.then(response => console.log(response.status) || response) // output the status and return response
-.then(response => response.text()) // send response body to next then chain
-.then(body => console.log(body)) // you can use response body here
+const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
 
 fetch(url, {
     method: 'POST',
@@ -43,12 +32,27 @@ function displayData(data) {
     apiDataElement.appendChild(li);
   }
 
-function displayresponse(response)
+
+  fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({username:'sb12'})
+  })
+  .then(response => response.json())
+  
+  .then(data => {
+    displayresponse(data);
+  })
+  
+  
+function displayresponse(data)
 {
   const apiDataElement = document.getElementById('serviceprovider-info');
       // Create a list item for the name and email
       const li = document.createElement('li');
-      li.innerHTML = `Name: ${response.username}<br>Email: ${response.email}<br>skills: ${response.skills}<br>category: ${response.categories}`;
+      li.innerHTML = `Name: ${data.username}<br>skills: ${data.skills}`;
       apiDataElement.appendChild(li);
 
 }
