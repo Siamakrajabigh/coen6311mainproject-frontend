@@ -358,13 +358,8 @@ headerTemplate.innerHTML = `
   .dropdown:hover .dropbtn {background-color: grey;}
 
   .icon-bar {
-<<<<<<< HEAD
-    width: 90px; /* Set a specific width */
-    background-color: #555; /* Dark-grey background */
-=======
     width: 200px; /* Set a specific width */
     background-color: black; /* Dark-grey background */
->>>>>>> 2591bada36f712305102353f6a9bef73cda01062
   }
   
   .icon-bar a {
