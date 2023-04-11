@@ -13,10 +13,6 @@
     <!--common header and footer-->
     <script src="../components/header_profile.js" type="text/javascript" defer></script>
     <script src="../components/footer.js"></script>
-    
-    <script>
-      console.log(document.cookie);
-    </script>
 </head>
 <body>
   <header_profile-component></header_profile-component>
@@ -79,10 +75,11 @@
       const accessToken = params[1].split('=')[1];
       console.log(accessToken);
       // https://openidconnect.googleapis.com/v1/userinfo?access_token=ya29.a0AfH6SMDfRQFdEOxq97LXqUa1jwdtRLSD2l_hiLFeaWYXRBB6gIkh7XHko75xj70uPnuOppKtf0c 
-
+      console.log(localStorage.getItem('useremail'));
+      
       // make API request to Google userinfo endpoint
-      const url = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
-      fetch(url)
+      const googleUrl = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
+      fetch(googleUrl)
         .then(response => response.json())
         .then(data => {
           const email = data.email;

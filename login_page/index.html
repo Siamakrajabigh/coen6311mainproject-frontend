@@ -31,9 +31,10 @@
       // If there's an access token, try an API request.
       // Otherwise, start OAuth 2.0 flow.
       function getOauthorized() {
-        const username = document.getElementById('username').value
-        document.cookie = `userEmail=${username}`;
-        
+        // saving user_email for future refrences in the local storage
+        const useremail = document.getElementById('useremail').value
+        localStorage.setItem('useremail', useremail);
+
         var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
         if (params && params['access_token']) {
           var xhr = new XMLHttpRequest();
@@ -114,7 +115,7 @@
                                                 <label>username<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="username" placeholder="Enter Username">
+                                                    <input type="text" class="form-control" id="useremail" placeholder="Enter Email Address">
                                                 </div>
                                             </div>
 
