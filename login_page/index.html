@@ -161,11 +161,11 @@
     let url = 'https://coen6311-380422.nn.r.appspot.com/login'
     let submitLogInForm = function() {
             const data = { 
-                "username":document.getElementById('username').value,
+                "useremail":document.getElementById('useremail').value,
                 "password":document.getElementById('password').value
              
             };
-
+            localStorage.setItem('userEmail', useremail);
             fetch(url, {
                 method: 'POST',
                 headers: {
