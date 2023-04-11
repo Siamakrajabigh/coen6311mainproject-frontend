@@ -71,16 +71,16 @@
     
     <script src="connection.js"></script>
     <script>
-      const params = window.location.hash.split('&');
-      const accessToken = params[1].split('=')[1];
-      // make API request to Google userinfo endpoint
-      const googleUrl = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
-      fetch(googleUrl)
-        .then(response => response.json())
-        .then(data => {
-          const email = data.email;
-          console.log(email);
-        });
+      // const params = window.location.hash.split('&');
+      // const accessToken = params[1].split('=')[1];
+      // // make API request to Google userinfo endpoint
+      // const googleUrl = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
+      // fetch(googleUrl)
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     const email = data.email;
+      //     console.log(email);
+      //   });
       
       // getting user email from localStorage
       let userEmail = localStorage.getItem('userEmail');
