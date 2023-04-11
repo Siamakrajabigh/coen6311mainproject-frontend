@@ -73,10 +73,6 @@
     <script>
       const params = window.location.hash.split('&');
       const accessToken = params[1].split('=')[1];
-      console.log(accessToken);
-      // https://openidconnect.googleapis.com/v1/userinfo?access_token=ya29.a0AfH6SMDfRQFdEOxq97LXqUa1jwdtRLSD2l_hiLFeaWYXRBB6gIkh7XHko75xj70uPnuOppKtf0c 
-      console.log(localStorage.getItem('useremail'));
-      
       // make API request to Google userinfo endpoint
       const googleUrl = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
       fetch(googleUrl)
@@ -85,16 +81,11 @@
           const email = data.email;
           console.log(email);
         });
-      // fetch('https://openidconnect.googleapis.com/v1/userinfo?access_token='+accessToken)
-      // .then(response => response.json())
-      // .then(data => {
-      //   const emailAddress = data.email;
-      //   // do something with the email address
-      // })
-      // .catch(error => {
-      //   console.error('Error fetching user info:', error);
-      // });
-
+      
+      // getting user email from localStorage
+      let userEmail = localStorage.getItem('useremail');
+      console.log(userEmail);
+      getUserDataByEmail(userEmail);
     </script>
     
     </body>

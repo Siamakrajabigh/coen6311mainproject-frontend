@@ -2,24 +2,24 @@
 //       .then(response => response.json())
 //       .then(json => console.log(json))
 
-var data = {
+function getUserDataByEmail(userEmail) {
+  let requestBody = {
+    'email': userEmail
+  };
+  const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
 
-"email" : "shubha.sbj@gmail.com"
-};
-
-const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
-
-fetch(url, {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-})
-.then(response => response.json())
-.then(data => {
-  displayData(data);
-})
+  fetch(url, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+  })
+  .then(response => response.json())
+  .then(data => {
+    displayData(data);
+  })
+}
 
 function displayData(data) {
     // Get the HTML element with the ID 'api-data'
@@ -33,6 +33,7 @@ function displayData(data) {
   }
 
 
+function getUserDataByUsername(userName) {
   fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     method: 'POST',
     headers: {
@@ -45,10 +46,10 @@ function displayData(data) {
   .then(data => {
     displayresponse(data);
   })
+}
   
   
-function displayresponse(data)
-{
+function displayresponse(data) {
   const apiDataElement = document.getElementById('serviceprovider-info');
       // Create a list item for the name and email
       const li = document.createElement('li');
