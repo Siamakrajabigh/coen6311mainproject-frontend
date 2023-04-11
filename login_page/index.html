@@ -31,6 +31,9 @@
       // If there's an access token, try an API request.
       // Otherwise, start OAuth 2.0 flow.
       function getOauthorized() {
+        const username = document.getElementById('username').value
+        document.cookie = `userEmail=${username}`;
+        
         var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
         if (params && params['access_token']) {
           var xhr = new XMLHttpRequest();
