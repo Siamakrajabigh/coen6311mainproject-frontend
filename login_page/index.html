@@ -33,7 +33,7 @@
       function getOauthorized() {
         // saving user_email for future refrences in the local storage
         const useremail = document.getElementById('useremail').value
-        localStorage.setItem('useremail', useremail);
+        localStorage.setItem('userEmail', useremail);
 
         var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
         if (params && params['access_token']) {
@@ -112,7 +112,7 @@
                                         
                                         <h3 class="mb-3 text-center">Login Now</h3>
                                             <div class="col-12">
-                                                <label>username<span class="text-danger">*</span></label>
+                                                <label>User Email<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
                                                     <input type="text" class="form-control" id="useremail" placeholder="Enter Email Address">
@@ -120,7 +120,7 @@
                                             </div>
 
                                             <div class="col-12">
-                                                <label>password<span class="text-danger">*</span></label>
+                                                <label>Password<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
                                                     <input type="text" class="form-control" id="password" placeholder="Enter Password">
