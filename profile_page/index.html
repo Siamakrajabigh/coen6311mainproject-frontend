@@ -14,8 +14,8 @@
     <script src="../components/header_profile.js" type="text/javascript" defer></script>
     <script src="../components/footer.js"></script>
     <script>
-      const parsedUrl = new URL(window.location.href);
-      const accessToken = parsedUrl.searchParams.get("access_token");
+      const params = window.location.hash.split('&');
+      const accessToken = params[1].split('=')[1];
       console.log(accessToken);
       // make API request to Google userinfo endpoint
       fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
