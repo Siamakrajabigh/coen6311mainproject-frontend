@@ -13,27 +13,6 @@
     <!--common header and footer-->
     <script src="../components/header_profile.js" type="text/javascript" defer></script>
     <script src="../components/footer.js"></script>
-    <script>
-      const params = window.location.hash.split('&');
-      const accessToken = params[1].split('=')[1];
-      console.log(accessToken);
-      // make API request to Google userinfo endpoint
-      fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-        headers: {
-          'Authorization': 'Bearer ' + accessToken
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-        const emailAddress = data.email;
-        // do something with the email address
-      })
-      .catch(error => {
-        console.error('Error fetching user info:', error);
-      });
-
-    </script>
-    
     
 
 </head>
@@ -93,6 +72,27 @@
     <footer-component></footer-component>
     
     <script src="connection.js"></script>
+    <script>
+      const params = window.location.hash.split('&');
+      const accessToken = params[1].split('=')[1];
+      debugger;
+      console.log(accessToken);
+      // make API request to Google userinfo endpoint
+      fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+        headers: {
+          'Authorization': 'Bearer ' + accessToken
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        const emailAddress = data.email;
+        // do something with the email address
+      })
+      .catch(error => {
+        console.error('Error fetching user info:', error);
+      });
+
+    </script>
     
     </body>
 </html>
