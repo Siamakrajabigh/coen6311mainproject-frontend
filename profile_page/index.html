@@ -77,12 +77,10 @@
       const accessToken = params[1].split('=')[1];
       debugger;
       console.log(accessToken);
+      // https://openidconnect.googleapis.com/v1/userinfo?access_token=ya29.a0AfH6SMDfRQFdEOxq97LXqUa1jwdtRLSD2l_hiLFeaWYXRBB6gIkh7XHko75xj70uPnuOppKtf0c 
+
       // make API request to Google userinfo endpoint
-      fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-        headers: {
-          'Authorization': 'Bearer ' + accessToken
-        }
-      })
+      fetch('https://openidconnect.googleapis.com/v1/userinfo?access_token='+accessToken)
       .then(response => response.json())
       .then(data => {
         const emailAddress = data.email;
