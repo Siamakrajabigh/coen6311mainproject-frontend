@@ -1,3 +1,6 @@
+let username = localStorage.getItem('username');
+let userEmail = localStorage.getItem('userEmail');
+
 var data = {
 
     "email" : "shubha.sbj@gmail.com"
@@ -11,7 +14,8 @@ var data = {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify({username:username})
     })
     .then(response => response.json())
     .then(data => {
