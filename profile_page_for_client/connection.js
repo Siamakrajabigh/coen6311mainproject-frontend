@@ -55,7 +55,6 @@
       .then(data => {
         displayPersonalInformation(data);
       })
-      console.log(data)
       function displayPersonalInformation(data) {
         // Get the HTML element with the ID 'api-data'
         const personalInfo = document.getElementById('personal-info');
@@ -71,7 +70,7 @@
           `;
           personalInfo.innerHTML = html;
 
-      }    
+ }    
 // send email inviation 
 const sendInvitationBtn = document.getElementById('sendInvitationBtn');
 sendInvitationBtn.addEventListener('click', (event) => {
