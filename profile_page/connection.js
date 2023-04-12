@@ -3,6 +3,7 @@
 //       .then(json => console.log(json))
 let username = localStorage.getItem('username');
 let userEmail = localStorage.getItem('userEmail');
+
 var data = {
 
 "email" : "userEmail"
@@ -15,7 +16,7 @@ fetch(url, {
     headers: {
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({email:userEmail})
 })
 .then(response => response.json())
 .then(data => {
