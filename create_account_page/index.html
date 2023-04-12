@@ -80,60 +80,6 @@
     <script>
         let url = 'https://coen6311-380422.nn.r.appspot.com/createAccount'
 
-        /* var submitRegisterForm = async function() {
-            let debugVar = null
-            let response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'text/html'
-                },
-                body: JSON.stringify(params)
-            });
-
-            if (response.ok) {
-                let responseText = await response.text();
-                console.log(responseText);
-            } 
-            else {
-                alert("HTTP-Error: " + response.status);
-            }
-        
-            // fetch(url, {
-            //     method: 'POST',
-            //     headers: {
-            //     'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify(params)
-            // })
-            // .then(response =>{debugvar=response.text(); return response.text()})
-            // .then(responseData => {
-            //  // Do something with the response data
-            //  console.log(responseData)
-
-            // })
-            // .catch(error => {
-            //  // Handle any errors that occur during the API request
-            // });
-        }*/
-
-        // let submitRegisterForm = function() {
-        //     alert('HELLO!');
-        //     var params = '?username=' + document.getElementById('username').value + 
-        //                 '&email=' + document.getElementById('email').value +
-        //                 '&skills=' + document.getElementById('skills').value +
-        //                 '&categories=' + document.getElementById('categories').value;
-        //     console.log(params);
-        //     let xhr = new XMLHttpRequest();
-        //     xhr.onload = function() {
-        //         console.log(xhr.response);
-        //         console.alert('Got back the update');
-        //     };
-        //     xhr.open('GET', url+params, true);
-        //     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        //     xhr.responseType = 'text/html';
-        //     xhr.send(null);
-        //    alert('XHR Request sent!');
-        // }
         let submitRegisterForm = function() {
             const data = { 
                 "firstname":document.getElementById('firstname').value,
@@ -153,17 +99,25 @@
             })
             .then(response => response.json())
             .then(responseData => {
-            // Do something with the response data
-            console.log(responseData)
-            console.log(responseData.type)
-            alert("Your account created!, Now you will redirect you to your profile page")
-            if (responseData.type == "service provider") {
+                // Do something with the response data
+                console.log(responseData)
                 console.log(responseData.type)
-            window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
-            }
+                alert("Your account created!, Now you will redirect you to your profile page")
+
+                if (localStorage.getItem('userEmail') == undefined) {
+                    localStorage.setItem('userEmail', document.getElementById('email').value);
+                }
+                if (responseData.type == "service provider") {
+                    console.log(responseData.type)
+                    window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+                }
+                if (responseData.type == "client") {
+                    console.log(responseData.type)
+                    window.location.href = "https://www.greengrassfreelancer.com/profile_page_for_client/index.html";
+                }
             })
             .catch(error => {
-            // Handle any errors that occur during the API request
+                // Handle any errors that occur during the API request
             });
             
         }

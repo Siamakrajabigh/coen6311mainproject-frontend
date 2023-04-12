@@ -13,6 +13,9 @@
     <!--common header and footer-->
     <script src="../components/header_profile.js" type="text/javascript" defer></script>
     <script src="../components/footer.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+
 </head>
 <body>
   <header_profile-component></header_profile-component>
@@ -30,31 +33,29 @@
                             <div id="personal-info">
                             </div>
                             <div id="serviceprovider-info">
-                            </div>
 
+                            </div>
+                            
+                              
+                      </div>
+                      <div class="p-4">
+                        <h4 class="fst-normal">Send Invitation:</h4>
+                        <form>
+                            <label for="emailInput">Email:</label>
+                            <input type="email" id="emailInput" name="emailInput" required>
+                            <button id="sendInvitationBtn">Send Invitation</button>
+                          </form>
+                          
                       </div>
               
                     </div>
                   </div>
-              <div class="col-md-8">          
-                <article class="blog-post" style="top: 1 rem;">
-                  <hr>
-                  <h2 class="blog-post-title mb-1">Projects</h2>
-                  <p>Display tickets under this username</p>
-                  <p>Data on tickets </p>
-                  <hr>
-                  <h2>Tasks</h2>
-                  <dl>
-                    <dt>In Progress Tickets:</dt>
-                    <dd>All tickets that are open will be displayed here</dd>
-                    <dt>Completed Tickets:</dt>
-                    <dd>Previously completed tickets will be displayed here</dd>
-                 </dl>
-                 <hr>
-                  <h2>Work Requests</h2>
-                  <p>display work request tickets here</p>
-                  <hr>
-                </article>
+              <div class="col-md-8" >
+                <h3>My Tickets</h3>
+                <div id="show-tickets">
+
+                </div>
+
               </div>
           
               
@@ -65,24 +66,5 @@
     <footer-component></footer-component>
     
     <script src="connection.js"></script>
-    <script>
-      // const params = window.location.hash.split('&');
-      // const accessToken = params[1].split('=')[1];
-      // // make API request to Google userinfo endpoint
-      // const googleUrl = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
-      // fetch(googleUrl)
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     const email = data.email;
-      //     console.log(email);
-      //   });
-      
-      // getting user email from localStorage
-      let userEmail = localStorage.getItem('userEmail');
-      console.log(userEmail);
-      debugger
-      getUserDataByEmail(userEmail);
-    </script>
-    
     </body>
 </html>

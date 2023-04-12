@@ -13,6 +13,7 @@ const form = document.getElementById("apiForm");
         "requiredSkills": form.requiredSkills.value.split(","),
         "categories": [{ categoryName: form.categoryName.value }]
       };
+      console.log(data);
       fetch(endpoint, {
         method: "POST",
         headers: {

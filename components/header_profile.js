@@ -358,13 +358,8 @@ headerTemplate.innerHTML = `
   .dropdown:hover .dropbtn {background-color: grey;}
 
   .icon-bar {
-<<<<<<< HEAD
-    width: 90px; /* Set a specific width */
-    background-color: #555; /* Dark-grey background */
-=======
     width: 200px; /* Set a specific width */
     background-color: black; /* Dark-grey background */
->>>>>>> 2591bada36f712305102353f6a9bef73cda01062
   }
   
   .icon-bar a {
@@ -391,9 +386,9 @@ headerTemplate.innerHTML = `
     
             <ul class="nav col-12 col-lg-auto me-lg-auto justify-content-center ">
                 
-                <li><a href="landing_page.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
-                <li><a href="../landing_page/landing_page.html" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Explore</a></li>
+                <li><a href="../index.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
+                <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="../search/search.html" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
                 <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
