@@ -103,13 +103,17 @@
                 console.log(responseData)
                 console.log(responseData.type)
                 alert("Your account created!, Now you will redirect you to your profile page")
+
+                if (localStorage.getItem('userEmail') == undefined) {
+                    localStorage.setItem('userEmail', document.getElementById('email').value);
+                }
                 if (responseData.type == "service provider") {
                     console.log(responseData.type)
                     window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
                 }
-
-                if (localStorage.getItem('userEmail') == undefined) {
-                    localStorage.setItem('userEmail', document.getElementById('email').value);
+                if (responseData.type == "client") {
+                    console.log(responseData.type)
+                    window.location.href = "https://www.greengrassfreelancer.com/profile_page_for_client/index.html";
                 }
             })
             .catch(error => {
