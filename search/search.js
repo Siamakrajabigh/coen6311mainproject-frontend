@@ -8,7 +8,7 @@ var data = {
     
     const dataContainer = document.getElementById('data-container');
 
-    const url = 'https://coen6311-380422.nn.r.appspot.com/viewAllTickets'
+    const url = 'https://coen6311-380422.nn.r.appspot.com/viewAllNonTakenTickets'
     
     fetch(url, {
         method: 'POST',
