@@ -8,7 +8,7 @@ var data = {
     
     const dataContainer = document.getElementById('data-container');
 
-    const url = 'https://coen6311-380422.nn.r.appspot.com/viewAllTickets'
+    const url = 'https://coen6311-380422.nn.r.appspot.com/viewAllNonTakenTickets'
     
     fetch(url, {
         method: 'POST',
@@ -65,7 +65,6 @@ var data = {
               <li>Required Skills: ${item.requiredSkills.join(', ')}</li>
               <li>Technical Constraints: ${item.technicalConstraints}</li>
               <li>Requirement Descriptions: ${item.requirementDescriptions}</li>
-              <li>Ticket Number: ${item.ticketNumber}</li>
               <li>End Users: ${item.endUsers.map(user => user.username).join(', ')}</li>
               <li><button class="edit-button" data-id="${item.id}">Accept Ticket</button></li>
             </ul>
