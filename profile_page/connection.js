@@ -2,24 +2,24 @@
 //       .then(response => response.json())
 //       .then(json => console.log(json))
 
-function getUserDataByEmail(userEmail) {
-  let requestBody = {
-    'email': userEmail
-  };
-  const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
+var data = {
 
-  fetch(url, {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(requestBody)
-  })
-  .then(response => response.json())
-  .then(data => {
-    displayData(data);
-  })
-}
+"email" : "shubha.sbj@gmail.com"
+};
+
+const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
+
+fetch(url, {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => {
+  displayData(data);
+})
 
 function displayData(data) {
     // Get the HTML element with the ID 'api-data'
@@ -31,25 +31,54 @@ function displayData(data) {
     li.innerHTML = `Name: ${fullName}<br>Email: ${data.email}`;
     apiDataElement.appendChild(li);
   }
+ 
+  var data = {
 
-
-function getUserDataByUsername(userName) {
+    "username":'SB1'};
+    var skills = [
+      {id: 1, skillTitle: 'Python'}
+    ]; 
+  
   fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify({username:'sb12'})
+    body: JSON.stringify(data)
   })
   .then(response => response.json())
   
-  .then(data => {
-    displayresponse(data);
-  })
-}
+  .then(data =>
+    displayServiceProviderInfo(data)
+  )
+  
+  function displayServiceProviderInfo(data) {
+    const apiDataElement = document.getElementById('serviceprovider-info');
+    console.log(data);
+    // Create a list item for the name and email
+    const li = document.createElement('li');
+    li.innerHTML = `Name: ${data.username}`;
+    li.innerHTML = `Skills:`;
+
+    // Create a sub-list for the skills
+    const skillsList = document.createElement('ul');
+    data.skills.forEach(skill => {
+      const skillLi = document.createElement('li');
+      skillLi.textContent = skill.skillTitle;
+      skillsList.appendChild(skillLi);
+    });
+    li.appendChild(skillsList);
+  
+    apiDataElement.appendChild(li);
+  }
   
   
-function displayresponse(data) {
+
+
+function displayresponse(data)
+{
+  
+  
   const apiDataElement = document.getElementById('serviceprovider-info');
       // Create a list item for the name and email
       const li = document.createElement('li');
