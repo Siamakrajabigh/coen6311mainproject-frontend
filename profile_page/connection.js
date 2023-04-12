@@ -23,11 +23,11 @@ fetch(url, {
 function displayData(data) {
     // Get the HTML element with the ID 'api-data'
     const apiDataElement = document.getElementById('personal-info');
-  
+    console.log(data);
     // Create a list item for the name and email
     const li = document.createElement('li');
     const fullName = `${data.firstName} ${data.lastName}`;
-    li.innerHTML = `Name: ${fullName}<br>Email: ${data.email}`;
+    li.innerHTML = `Name: ${fullName}<br>Email: ${data.email}<br>Rating: ${data.rate}`;
     apiDataElement.appendChild(li);
   }
  
@@ -66,12 +66,37 @@ function viewAcceptedTickets(data)
                 <li><b>Required Skills:</b> ${item.requiredSkills.join(', ')}</li>
                 <li><b>Technical Constraints:</b> ${item.technicalConstraints}</li>
                 <li><b>Delivery Time:</b> ${item.deliveryTime}</li>
+                <li><button class="Complete-button" data-id="${item.id}">Job Completed</button></li>
             </ul>
           `;
         });
         showTicket.innerHTML = html;
 }
 
+dataContainer.innerHTML = html;
+    
+// Add event listener to the Accept Ticket buttons
+const completeButtons = document.querySelectorAll('.Complete-button');
+completeButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const ticketId = button.dataset.id;
+    fetch(`https://coen6311-380422.nn.r.appspot.com/acceptTicket`, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({username:username, id:ticketId})
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+     // window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+  })       
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+  });
+});
 
 
 fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
