@@ -165,7 +165,9 @@
                 "password":document.getElementById('password').value
              
             };
-            localStorage.setItem('userEmail', useremail);
+            localStorage.setItem('userEmail', useremail.value);
+            console.log(localStorage.getItem('userEmail'))
+            debugger
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -179,12 +181,14 @@
             console.log(responseData)
             console.log(responseData.firstName)
             localStorage.setItem('username', responseData.username);
-            debugger
             if (responseData.type == "admin") {
             window.location.href = "https://www.greengrassfreelancer.com/admin_page/index.html";
             }
-            else {
-              window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+            if (responseData.type == "service provider") {
+            window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+            }
+            if (responseData.type == "client") {
+              window.location.href = "https://www.greengrassfreelancer.com/profile_page_for_client/index.html";
             }
             })
             .catch(error => {
