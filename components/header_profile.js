@@ -439,7 +439,7 @@ logoutLink.addEventListener('click', (event) => {
   event.preventDefault(); // prevent the default link behavior
   logout(); // call your logout function
 });
- debugger
+
 function logout() 
 {
   localStorage.setItem('username', undefined);
