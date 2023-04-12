@@ -34,7 +34,10 @@ function displayData(data) {
  
   var data = {
 
-    "username":'SB1'};
+    "username":'SB1',
+    "myUsername": "SB1"
+  };
+
     var skills = [
       {id: 1, skillTitle: 'Python'}
     ]; 
@@ -49,7 +52,7 @@ function displayData(data) {
   .then(response => response.json())
   
   .then(data =>
-    displayServiceProviderInfo(data)
+    console.log(data)
   )
   
   function displayServiceProviderInfo(data) {

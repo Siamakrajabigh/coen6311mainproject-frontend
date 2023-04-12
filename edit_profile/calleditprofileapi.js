@@ -1,5 +1,3 @@
-const form = document.getElementById("apiForm");
-    const endpoint = "https://coen6311-380422.nn.r.appspot.com/createNewServiceRequestForEndUser";
 
     form.addEventListener("submit", event => {
       event.preventDefault();
@@ -27,15 +25,4 @@ const form = document.getElementById("apiForm");
         });
       });
     
-    function displayData(data) {
-        // Get the HTML element with the ID 'api-data'
-        const apiDataElement = document.getElementById('personal-info');
-      
-        // Create a list item for the name and email
-        const li = document.createElement('li');
-        const fullName = `${data.firstName} ${data.lastName}`;
-        li.innerHTML = `Name: ${fullName}<br>Email: ${data.email}`;
-        li.innerHTML = `Skills: ${data.skills}<br> Category: ${data.categories}`
-        apiDataElement.appendChild(li);
-      }
     
