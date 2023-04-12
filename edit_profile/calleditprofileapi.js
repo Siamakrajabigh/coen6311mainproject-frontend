@@ -1,3 +1,6 @@
+let username = localStorage.getItem('username');
+let userEmail = localStorage.getItem('userEmail');
+
 const form = document.getElementById("apiForm");
     const endpoint = "https://coen6311-380422.nn.r.appspot.com/createNewServiceRequestForEndUser";
 
@@ -5,7 +8,7 @@ const form = document.getElementById("apiForm");
       event.preventDefault();
 
       const data = {
-        "username": form.username.value,
+        "username": username,
         "skills": form.requiredSkills.value.split(",")
       };
 
@@ -27,8 +30,7 @@ const form = document.getElementById("apiForm");
         });
       });
     
-      let username = localStorage.getItem('username');
-let userEmail = localStorage.getItem('userEmail');
+
 
 var data = {
 
