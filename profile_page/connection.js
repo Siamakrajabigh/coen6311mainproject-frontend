@@ -31,24 +31,54 @@ function displayData(data) {
     li.innerHTML = `Name: ${fullName}<br>Email: ${data.email}`;
     apiDataElement.appendChild(li);
   }
+ 
+  var data = {
 
-
+    "username":'SB1'};
+    var skills = [
+      {id: 1, skillTitle: 'Python'}
+    ]; 
+  
   fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify({username:'sb12'})
+    body: JSON.stringify(data)
   })
   .then(response => response.json())
   
-  .then(data => {
-    displayresponse(data);
-  })
+  .then(data =>
+    displayServiceProviderInfo(data)
+  )
+  
+  function displayServiceProviderInfo(data) {
+    const apiDataElement = document.getElementById('serviceprovider-info');
+    console.log(data);
+    // Create a list item for the name and email
+    const li = document.createElement('li');
+    li.innerHTML = `Name: ${data.username}`;
+    li.innerHTML = `Skills:`;
+
+    // Create a sub-list for the skills
+    const skillsList = document.createElement('ul');
+    data.skills.forEach(skill => {
+      const skillLi = document.createElement('li');
+      skillLi.textContent = skill.skillTitle;
+      skillsList.appendChild(skillLi);
+    });
+    li.appendChild(skillsList);
+  
+    apiDataElement.appendChild(li);
+  }
   
   
+
+
 function displayresponse(data)
 {
+  
+  
   const apiDataElement = document.getElementById('serviceprovider-info');
       // Create a list item for the name and email
       const li = document.createElement('li');
