@@ -106,4 +106,37 @@ function displayServiceProviderInfo(data) {
   apiDataElement.appendChild(li);
 }
 
+const sendInvitationBtn = document.getElementById('sendInvitationBtn');
+sendInvitationBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const email = document.getElementById('emailInput').value;
+  console.log(email);
+  const url = 'https://coen6311-380422.nn.r.appspot.com/invitation';
+  const data= {
+
+    "recipientEmail":email,
+        "username":username
+     }
+     console.log(data)
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)}
+  fetch(url, options)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      // Do something with the response data
+    })
+    .catch(error => console.log(error));
+});
+
+
 
