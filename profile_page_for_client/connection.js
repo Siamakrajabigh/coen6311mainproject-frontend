@@ -1,5 +1,7 @@
 
     
+let username = localStorage.getItem('username');
+let userEmail = localStorage.getItem('userEmail');
     const showTicket = document.getElementById('show-tickets');
 
     const url = 'https://coen6311-380422.nn.r.appspot.com/viewEndUserTickets'
@@ -10,8 +12,8 @@
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
-            myUsername: 'Rashel',
-            usernameOfEndUser:'Rashel' })
+            myUsername: username,
+            usernameOfEndUser:username })
 
     })
     .then(response => response.json())
@@ -46,8 +48,8 @@
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username:'Rashel',
-            myUsername:'Rashel'
+            username:username,
+            myUsername:username
     })
       })
       .then(response => response.json())
@@ -81,7 +83,7 @@ sendInvitationBtn.addEventListener('click', (event) => {
   const data= {
 
     "recipientEmail":email,
-        "username":"Rashel"
+        "username":username
      }
      console.log(data)
   const options = {
