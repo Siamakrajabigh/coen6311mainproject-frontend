@@ -1,10 +1,11 @@
 // fetch('https://coen6311-380422.nn.r.appspot.com/rateAServiceProvider')
 //       .then(response => response.json())
 //       .then(json => console.log(json))
-
+let username = localStorage.getItem('username');
+let userEmail = localStorage.getItem('userEmail');
 var data = {
 
-"email" : "shubha.sbj@gmail.com"
+"email" : "userEmail"
 };
 
 const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
@@ -34,8 +35,8 @@ function displayData(data) {
  
   var data = {
 
-    "username":'SB1',
-    "myUsername": "SB1"
+    "username":'username',
+    "myUsername": 'username'
   };
 
     var skills = [
