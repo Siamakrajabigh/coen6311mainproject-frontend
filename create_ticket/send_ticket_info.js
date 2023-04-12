@@ -1,3 +1,5 @@
+let username = localStorage.getItem('username');
+let userEmail = localStorage.getItem('userEmail');
 const form = document.getElementById("apiForm");
     const endpoint = "https://coen6311-380422.nn.r.appspot.com/createNewServiceRequestForEndUser";
 
@@ -9,7 +11,7 @@ const form = document.getElementById("apiForm");
         "requirementDescriptions": form.requirementDescriptions.value,
         "technicalConstraints": form.technicalConstraints.value,
         "deliveryTime": form.deliveryTime.value,
-        "username": form.username.value,
+        "username": username,
         "requiredSkills": form.requiredSkills.value.split(","),
         "categories": [{ categoryName: form.categoryName.value }]
       };
