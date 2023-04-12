@@ -442,6 +442,5 @@ logoutLink.addEventListener('click', (event) => {
 
 function logout() 
 {
-  localStorage.setItem('username', undefined);
-  localStorage.setItem('userEmail', undefined);
+  localStorage.clear();
 }
