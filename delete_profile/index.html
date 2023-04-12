@@ -80,7 +80,7 @@
                 const data = { 
                     "username":document.getElementById('username').value,
                 };
-                
+                debugger
                 fetch(url, {
                     method: 'POST',
                     headers: {
@@ -88,12 +88,14 @@
                     },
                     body: JSON.stringify(data)
                 })
+                debugger
                 .then(response => response.json())
                 .then(responseData => {
                 // Do something with the response data
+                debugger
                 console.log(responseData)
-                
                 alert("responseData")
+                alert(responseData)
 
                 })
                 .catch(error => {
