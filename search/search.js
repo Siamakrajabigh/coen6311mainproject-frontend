@@ -2,10 +2,35 @@
 let username = localStorage.getItem('username');
 let userEmail = localStorage.getItem('userEmail');
 
-var data = {
+fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({username:username, myUsername:username})
+})
+.then(response => response.json())
 
-    "email" : "shubha.sbj@gmail.com"
-    };
+.then(data =>
+  customer_info(data)
+)
+
+function customer_info(data){
+  var userType = data.type;
+  if(userType==='client'){
+    document.getElementById("customer-content").style.display = "block";
+    document.getElementById("provider-content").style.display = "none";
+  }else if (userType === "service-provider") {
+    // Show provider content and hide customer content
+    document.getElementById("customer-content").style.display = "none";
+    document.getElementById("provider-content").style.display = "block";
+  } else {
+    // User type not recognized, hide both contents
+    document.getElementById("customer-content").style.display = "none";
+    document.getElementById("provider-content").style.display = "none";
+  }
+}
+
     
     const dataContainer = document.getElementById('data-container');
 
