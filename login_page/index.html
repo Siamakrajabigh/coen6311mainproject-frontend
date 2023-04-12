@@ -178,6 +178,8 @@
             // Do something with the response data
             console.log(responseData)
             console.log(responseData.firstName)
+            localStorage.setItem('username', responseData.username);
+            debugger
             if (responseData.type == "admin") {
             window.location.href = "https://www.greengrassfreelancer.com/admin_page/index.html";
             }
