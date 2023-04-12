@@ -1,3 +1,5 @@
+const form = document.getElementById("apiForm");
+    const endpoint = "https://coen6311-380422.nn.r.appspot.com/createNewServiceRequestForEndUser";
 
     form.addEventListener("submit", event => {
       event.preventDefault();

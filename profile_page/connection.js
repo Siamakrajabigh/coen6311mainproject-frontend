@@ -49,12 +49,12 @@ function displayData(data) {
     headers: {
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({username:username, myUsername:username})
   })
   .then(response => response.json())
   
   .then(data =>
-    console.log(data)
+    displayServiceProviderInfo(data)
   )
   
   function displayServiceProviderInfo(data) {
