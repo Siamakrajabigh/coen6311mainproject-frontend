@@ -1,3 +1,6 @@
+
+let username = localStorage.getItem('username');
+let userEmail = localStorage.getItem('userEmail');
 const url = 'https://coen6311-380422.nn.r.appspot.com/admin/report'
 const dataContainer = document.getElementById('see-acitivity');
 
@@ -7,7 +10,7 @@ fetch(url, {
     headers: {
     'Content-Type': 'application/json'
     },
-    body: JSON.stringify({username:"Rashel111"})
+    body: JSON.stringify({username:username})
 })
 .then(response => response.json())
 .then(data => {
