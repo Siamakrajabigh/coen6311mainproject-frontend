@@ -41,13 +41,13 @@
                     </div>
                   </div>
                   <div class="col-md-8"> 
-                    <form id="apiForm">       
+                    <div id="apiForm">       
                         <h3>Delete User</h3>
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required><br><br>
                 
-                        <button type="submit">Submit</button>
-                      </form>          
+                        <button  onclick="DeleteAccount()" class="btn btn-primary px-4 float-center mt-4">Submit</button>
+                    </div>          
                 </div>
               <!-- <div class="col-md-8">          
                 <article class="blog-post" style="top: 1 rem;">
@@ -74,5 +74,36 @@
       
     </main>
     <footer-component></footer-component>   
+    <script>
+        let url = 'https://coen6311-380422.nn.r.appspot.com/admin/deleteAccount'
+        let DeleteAccount = function() {
+                const data = { 
+                    "username":document.getElementById('username').value,
+                };
+                debugger
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                debugger
+                .then(response => response.json())
+                .then(responseData => {
+                // Do something with the response data
+                debugger
+                console.log(responseData)
+                alert("responseData")
+                alert(responseData)
+
+                })
+                .catch(error => {
+                // Handle any errors that occur during the API request
+                });
+                
+                }
+              
+      </script>
 </body>
 </html>
