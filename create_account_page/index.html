@@ -104,9 +104,9 @@
                 console.log(responseData.type)
                 alert("Your account created!, Now you will redirect you to your profile page")
 
-                if (localStorage.getItem('userEmail') == undefined) {
-                    localStorage.setItem('userEmail', document.getElementById('email').value);
-                }
+                localStorage.setItem('userEmail', document.getElementById('email').value);
+                localStorage.setItem('username', responseData.username);
+                
                 if (responseData.type == "service provider") {
                     console.log(responseData.type)
                     window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
