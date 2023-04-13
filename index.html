@@ -52,9 +52,9 @@
             </form>
     
             <div class="text-end" id="landing-sign-up-in">
-              <a href="login_page/index.html" class="btn btn-warning">Login</a>
+              <a class="btn btn-warning">Login</a>
               <!-- <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button> -->
-              <a href="create_account_page/index.html" class="btn btn-warning">Create Account</a>
+              <a class="btn btn-warning">Create Account</a>
             </div>
           </div>
         </div>
@@ -154,49 +154,32 @@
       console.log(userEmail);
       console.log(username);
 
-      if (userEmail) {
+      if (username) {
         buttonsParent = document.getElementById("landing-sign-up-in")
         buttons = buttonsParent.children;
-        console.log(buttons);
-        buttons[0].style.display = "none";
-        buttons[1].style.display = "none";
-
-        let logout = document.createElement('button');
-        logout.textContent = 'Logout';
-        logout.addEventListener("click", function() {
-          // Code to be executed when the button is clicked
-          localStorage.clear();
+        buttons[0].textContent = "Profile";
+        buttons[1].textContent = "Log out";
+        buttons[0].addEventListener('click', event =>{
+          alert('2')
+          window.location.href = "../profile_page/index.html"        
         });
-
-        
-
-        let dropDownContainer = document.createElement('div');
-        dropDownContainer.setAttribute('class', 'dropdown');
-        dropDownContainer.innerHTML = '<div class="container">\
-          <button class="btn" id="btn">\
-          </button>\
-          <div class="dropdown" id="dropdown">\
-            <a href="../profile_page/index.html">\
-              <i class="bx bx-plus-circle"></i>\
-              Profile Page\
-              <a href="../index.html" id="logout-link">Log Out</a>\
-          </div>\
-        </div>';
-   
-
-        buttonsParent.appendChild(dropDownContainer);
-
-        const logoutLink = document.getElementById('logout-link');
-        logoutLink.addEventListener('click', (event) => {
-          event.preventDefault(); // prevent the default link behavior
-          logout(); // call your logout function
-        });
-
-        function logout() {
+        buttons[1].addEventListener('click', event => {
+          alert('3')
           localStorage.clear();
+        })
+
+      }else{
+        buttons[0].addEventListener('click', event =>{
+          alert('0')
+          redirectToCreateAccount()
+        });
+        function redirectToCreateAccount() {
+          window.location.href = "../login_page/index.html";
         }
-
-
+        buttons[1].addEventListener('click', event => {
+          alert('1')
+          window.location.href = "../create_account_page/index.html"
+        })
       }
       
     </script>
