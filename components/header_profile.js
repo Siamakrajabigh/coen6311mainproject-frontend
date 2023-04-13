@@ -474,7 +474,7 @@ let checkUserTypeForEdit = function() {
         alert('2')
         if (responseData.type == "service provider") {
           alert('3')
-        window.location.href = "https://www.greengrassfreelancer.com/edit_profile/index.html";
+        window.location.href = "../edit_profile/index.html";
         }
         })
     .catch(error => {
@@ -508,7 +508,7 @@ let checkUserTypeForRedirecting = function() {
         console.log(responseData)
         if (responseData.type == "service provider") {
           alert('3')
-        window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+        window.location.href = "../profile_page/index.html";
         }
         })
     .catch(error => {
