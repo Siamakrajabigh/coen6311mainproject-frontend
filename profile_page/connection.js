@@ -52,9 +52,8 @@ function displayData(data) {
 .then(response => response.json())
 .then(data => {
 viewAcceptedTickets(data);
+console.log(data);
 })
-
-
 
 
 function viewAcceptedTickets(data)
