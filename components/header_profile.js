@@ -453,7 +453,7 @@ let checkUserTypeForEdit = function() {
     let username = localStorage.getItem('username');
     let userEmail = localStorage.getItem('userEmail');
     console.log(userEmail)
-    alert('1')
+    
 
     var data = {
 
@@ -471,9 +471,9 @@ let checkUserTypeForEdit = function() {
     })
     .then(response => response.json())
     .then(responseData => {
-        alert('2')
+        
         if (responseData.type == "service provider") {
-          alert('3')
+          
         window.location.href = "../edit_profile/index.html";
         }
         })
@@ -487,7 +487,7 @@ let checkUserTypeForRedirecting = function() {
     let username = localStorage.getItem('username');
     let userEmail = localStorage.getItem('userEmail');
     console.log(userEmail)
-    alert('1')
+    
     var data = {
 
     "email" : "userEmail"
@@ -504,10 +504,10 @@ let checkUserTypeForRedirecting = function() {
     })
     .then(response => response.json())
     .then(responseData => {
-        alert('2')
+        
         console.log(responseData)
         if (responseData.type == "service provider") {
-          alert('3')
+          
         window.location.href = "../profile_page/index.html";
         }
         })

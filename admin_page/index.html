@@ -14,6 +14,12 @@
     <!--common header and footer-->
     <script src="../components/header_profile.js" type="text/javascript" defer></script>
     <script src="../components/footer.js"></script>
+    <script src="send_message.js"></script>
+    <script>
+    
+    localStorage.setItem('username', "admin");
+    localStorage.setItem('userEmail', "admin");      
+    </script>
 
 
 </head>
@@ -36,6 +42,12 @@
                           <li><a href="../admin_page/delete_user.html">delete account</a></li>
                           <li><a href="../admin_page/user_report.html">User Reports</a></li>
                         </ol>
+
+                        <div class="p-4">
+                          <a href="./../message_page/index.html">
+                            <button id="send_message">Send Message</button>
+                        </a>
+                        </div>
                       </div>
               
                     </div>

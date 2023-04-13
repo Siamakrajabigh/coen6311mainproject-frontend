@@ -78,3 +78,9 @@ startChat(myUsername, theirUsername)
       const storeTextButton = document.getElementById('message-button');
       storeTextButton.addEventListener('click', storeText);
     });
+    document.addEventListener('DOMContentLoaded', function(){
+      const backButton = document.getElementById('back-button');
+      backButton.addEventListener('click', function(){
+        window.location.href = '../profile_page/index.html'
+      })
+    })
