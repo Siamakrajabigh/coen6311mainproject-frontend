@@ -55,7 +55,11 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     }
   }
   
+<<<<<<< HEAD
+  else if(data.type==='service provider')
+=======
   if(data.type === "service provider")
+>>>>>>> 35e105b18ac8ee319deca675a4b47b97bc832fc3
   {
     const dataContainer = document.getElementById('data-container');
 
@@ -115,6 +119,9 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         });
       });
     }
+  }
+  else{
+    alert('Nothing')
   }
 })
 
