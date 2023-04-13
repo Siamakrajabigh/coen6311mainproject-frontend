@@ -56,7 +56,11 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     }
   }
   
+<<<<<<< HEAD
+  else if(data.type==='service provider')
+=======
   else if(data.type === "service provider")
+>>>>>>> 24b75c98cd1949457585e21e72fef199e4fddf1d
   {
     const dataContainer = document.getElementById('data-container');
 
