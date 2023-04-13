@@ -1,6 +1,5 @@
-//let username = localStorage.getItem('username');
-let myUsername = "q"
-let theirUsername = ''
+let myUsername = localStorage.getItem('username');
+let theirUsername = myUsername
 let userEmail = localStorage.getItem('userEmail');
 function startChat(myUsername, theirUsername = null){
 fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
