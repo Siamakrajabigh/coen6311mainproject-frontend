@@ -11,27 +11,52 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
 })
 .then(response => response.json())
 
-.then(data =>
-  customer_info(data)
-)
+.then(data => {
+  if(data.type ==='client'){
+    const show_Data = document.getElementById('show-service-provider-info');
 
-function customer_info(data){
-  var userType = data.type;
-  if(userType==='client'){
-    document.getElementById("customer-content").style.display = "block";
-    document.getElementById("provider-content").style.display = "none";
-  }else if (userType === "service-provider") {
-    // Show provider content and hide customer content
-    document.getElementById("customer-content").style.display = "none";
-    document.getElementById("provider-content").style.display = "block";
-  } else {
-    // User type not recognized, hide both contents
-    document.getElementById("customer-content").style.display = "none";
-    document.getElementById("provider-content").style.display = "none";
-  }
-}
-
+    const url_show_service_provider = 'https://coen6311-380422.nn.r.appspot.com/showAllServiceProviders'
     
+    fetch(url_show_service_provider, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username:username})
+    })
+    .then(response => response.json())
+    .then(data => {
+      displayAllServiceProvider(data);
+    })       
+
+    function displayAllServiceProvider(data) {
+      let html = '<h4>Available Service Provider:</h4>';
+      data.forEach(item => {
+        const fullName = `${item.firstName} ${item.lastName}`;
+        html += `
+        <ul>
+          <li>Name: ${fullName}</li>
+          
+
+        </ul>
+      `;
+        item.skills.forEach(skill=>{
+          const skillLi = skill.skillTitle;
+          html += `
+            <ul>
+              <li>Skill: ${skillLi}</li>
+              
+
+            </ul>
+          `;
+        })
+      });
+      show_Data.innerHTML = html;
+    }
+  }
+  
+  elseif(data.type==='service provider')
+  {
     const dataContainer = document.getElementById('data-container');
 
     const url = 'https://coen6311-380422.nn.r.appspot.com/viewAllNonTakenTickets'
@@ -90,4 +115,33 @@ function customer_info(data){
         });
       });
     }
+  }
+})
 
+
+    
+    
+
+
+    // function displayTickets(data)
+    // {
+    //     //console.log(data);
+    //     let html = '';
+    //     data.forEach(item => {
+    //       html += `
+    //         <ul>
+    //           <li>ID: ${item.id}</li>
+    //           <li>Delivery Time: ${item.deliveryTime}</li>
+    //           <li>Task Type: ${item.taskType}</li>
+    //           <li>Required Skills: ${item.requiredSkills.join(', ')}</li>
+    //           <li>Technical Constraints: ${item.technicalConstraints}</li>
+    //           <li>Requirement Descriptions: ${item.requirementDescriptions}</li>
+    //           <li>End Users: ${item.endUsers.map(user => user.username).join(', ')}</li>
+    //           <li><button class="edit-button" data-id="${item.id}">Accept Ticket</button></li>
+    //         </ul>
+    //       `;
+    //     });
+    //     console.log(data);
+        
+    //     dataContainer.innerHTML = html;
+    // }
