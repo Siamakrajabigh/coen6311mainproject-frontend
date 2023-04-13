@@ -401,7 +401,7 @@ headerTemplate.innerHTML = `
             <a href="../profile_page/index.html">View Profile</a>
             <a href="../edit_profile/index.html">Edit Profile</a>
             <a href="https://www.youtube.com/user/hubspot">See Ratings</a>
-            <a href="../index.html" id="logout-link">Log Out</a>
+            <a href="#" onclick="logout()" id="logout-link">Log Out</a>
 
             </div>
             </div>
@@ -435,14 +435,19 @@ class Header extends HTMLElement {
 customElements.define('header_profile-component', Header);
 
 
-const logoutLink = document.getElementById('logout-link');
-logoutLink.addEventListener('click', (event) => {
-  event.preventDefault(); // prevent the default link behavior
-  logout(); // call your logout function
-});
+// const logoutLink = document.getElementById('logout-link');
+// logoutLink.addEventListener('click', (event) => {
+//   alert('2');
+//   event.preventDefault(); // prevent the default link behavior
+//   logout(); // call your logout function
+// });
 
-function logout() {
+// function logout() {
+//   alert("1");
+//   localStorage.clear();
+// }
+let logout = function() {
   localStorage.clear();
-}
-
+  window.location.href = "../index.html"
+};
 
