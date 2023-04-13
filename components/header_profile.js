@@ -399,7 +399,7 @@ headerTemplate.innerHTML = `
             <button>Profile Options<i class=" fa fa-user" id="userIcon"></i></button>
             <div class="dropdown-content">
             <a href="#" onclick="checkUserTypeForRedirecting()" id="profile-link">View Profile</a>
-            <a href="#" onclick="checkUserTypeForEdit" id="edit-link">Edit Profile</a>
+            <a href="#" onclick="checkUserTypeForEdit()" id="edit-link">Edit Profile</a>
             <a href="#" onclick="logout()" id="logout-link">Log Out</a>
 
             </div>
