@@ -380,7 +380,7 @@ headerTemplate.innerHTML = `
 
   
   </style>
-  <header class="header">
+  <div class="header">
         <div class="container">
           <div class="d-flex align-items-center justify-content-center">
     
@@ -409,7 +409,7 @@ headerTemplate.innerHTML = `
 
           </div>
         </div>
-    </header>
+</div>
 `;
 
 
@@ -421,13 +421,13 @@ class Header extends HTMLElement {
 
   connectedCallback() {
     const fontAwesome = document.querySelector('link[href*="font-awesome"]');
-    // const shadowRoot = this.attachShadow({ mode: 'closed' });
-    // if (fontAwesome) {
-    //   shadowRoot.appendChild(fontAwesome.cloneNode());
-    // }
+    const shadowRoot = this.attachShadow({ mode: 'closed' });
+    if (fontAwesome) {
+      shadowRoot.appendChild(fontAwesome.cloneNode());
+    }
 
-    document.body.appendChild(headerTemplate.content);
-    // shadowRoot.appendChild();
+    // document.body.appendChild(headerTemplate.content);
+    shadowRoot.appendChild(headerTemplate.content);
   }
 
 }
