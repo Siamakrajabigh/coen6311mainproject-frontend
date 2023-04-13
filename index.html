@@ -155,9 +155,17 @@
 
       if (userEmail) {
         buttons = document.getElementById("landing-sign-up-in")
-        buttons.remove();
-      }
+        buttons.removeChild();
 
+        let logout = document.createElement('button');
+        logout.textContent = 'Logout';
+        buttons.appendChild(logout);
+
+      }
+      logout.addEventListener("click", function() {
+      // Code to be executed when the button is clicked
+      localStorage.clear();
+      });
     </script>
 </body>
 </html>
