@@ -54,13 +54,37 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
       });
       show_Data.innerHTML = html;
     }
+
+    const form = document.getElementById("search-form");
+    const endpoint = "https://coen6311-380422.nn.r.appspot.com/searchServiceProvidersBySkills";
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      alert("clicked")
+
+      const data = {
+        "requiredSkills": form.searchInput.value.split(","),
+        "username":username
+      };
+      console.log(data);
+      fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("API response:", data);
+        })
+        .catch(error => {
+          console.error("Error sending data:", error);
+        });
+    });
   }
   
-<<<<<<< HEAD
   else if(data.type==='service provider')
-=======
-  else if(data.type === "service provider")
->>>>>>> 24b75c98cd1949457585e21e72fef199e4fddf1d
   {
     const dataContainer = document.getElementById('data-container');
 
