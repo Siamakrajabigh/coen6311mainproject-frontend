@@ -440,7 +440,8 @@ logoutLink.addEventListener('click', (event) => {
   logout(); // call your logout function
 });
 
-function logout() 
-{
+function logout() {
   localStorage.clear();
 }
+
+
