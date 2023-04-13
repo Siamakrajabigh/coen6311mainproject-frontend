@@ -27,61 +27,75 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     })
     .then(response => response.json())
     .then(data => {
-      displayAllServiceProvider(data);
+      displayServiceProviders(data);
     })       
 
-    function displayAllServiceProvider(data) {
-      let html = '<h4>Available Service Provider:</h4>';
-      data.forEach(item => {
-        const fullName = `${item.firstName} ${item.lastName}`;
-        html += `
-        <ul>
-          <li>Name: ${fullName}</li>
-          
-
-        </ul>
-      `;
-        item.skills.forEach(skill=>{
-          const skillLi = skill.skillTitle;
+    function displayServiceProviders(data) {
+      let html = '<h4>Available Service Providers:</h4>';
+    
+      // Check if the data array is empty
+      if (data.length === 0) {
+        html += '<p>No service providers found.</p>';
+      } else {
+        data.forEach(item => {
+          const fullName = `${item.firstName} ${item.lastName}`;
+    
           html += `
-            <ul>
-              <li>Skill: ${skillLi}</li>
-              
-
-            </ul>
+            <div class="provider">
+              <h5>Name:${fullName}</h5>
+              <p>Email:${item.email}</p>
+              <p>Skills:</p>
+              <ul>`;
+    
+          item.skills.forEach(skill => {
+            html += `<li>${skill.skillTitle}</li>`;
+          });
+    
+          html += `
+              </ul>
+            </div>
+            <hr>
           `;
-        })
-      });
-      show_Data.innerHTML = html;
+        });
+      }
+    
+      // Display the generated HTML in a div element with ID "service-providers"
+      document.getElementById('show-service-provider-info').innerHTML = html;
     }
+    
 
-    const form = document.getElementById("search-form");
-    const endpoint = "https://coen6311-380422.nn.r.appspot.com/searchServiceProvidersBySkills";
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('searchInput');
 
-    form.addEventListener("submit", event => {
-      event.preventDefault();
-      alert("clicked")
-
-      const data = {
-        "requiredSkills": form.searchInput.value.split(","),
+    searchButton.addEventListener('click', function() {
+      const inputValue = searchInput.value.split(",").map(skill => skill.trim());
+      const data={
+        "skills":inputValue,
         "username":username
-      };
+      }
       console.log(data);
-      fetch(endpoint, {
-        method: "POST",
+      
+      fetch('https://coen6311-380422.nn.r.appspot.com/searchServiceProvidersBySkills', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log("API response:", data);
-        })
-        .catch(error => {
-          console.error("Error sending data:", error);
-        });
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
     });
+
   }
   
   else if(data.type==='service provider')
