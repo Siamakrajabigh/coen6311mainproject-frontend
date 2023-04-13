@@ -49,7 +49,7 @@ function customer_info(data){
     })       
 
     function displayTickets(data) {
-      let html = '';
+      let html = '<h4> Available Tickets</h4>';
       data.forEach(item => {
         html += `
           <ul>
