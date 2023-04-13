@@ -34,28 +34,30 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
       let html = '<h4>Available Service Providers:</h4>';
     
       // Check if the data array is empty
-      if (data.length === 0 || data.type==='admin') {
+      if (data.length === 0 ) {
         html += '<p>No service providers found.</p>';
       } else {
         data.forEach(item => {
-          const fullName = `${item.firstName} ${item.lastName}`;
+          if(item.type==='service provider'){
+            const fullName = `${item.firstName} ${item.lastName}`;
     
-          html += `
-            <div class="provider">
-              <h5>Name:${fullName}</h5>
-              <p>Email:${item.email}</p>
-              <p>Skills:</p>
-              <ul>`;
-    
-          item.skills.forEach(skill => {
-            html += `<li>${skill.skillTitle}</li>`;
-          });
-    
-          html += `
-              </ul>
-            </div>
-            <hr>
-          `;
+            html += `
+              <div class="provider">
+                <h5>Name:${fullName}</h5>
+                <p>Email:${item.email}</p>
+                <p>Skills:</p>
+                <ul>`;
+      
+            item.skills.forEach(skill => {
+              html += `<li>${skill.skillTitle}</li>`;
+            });
+      
+            html += `
+                </ul>
+              </div>
+              <hr>
+            `;
+            }
         });
       }
     
@@ -138,14 +140,14 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         throw new Error('Network response was not ok.');
       })
       .then(data => {
-        displayServiceProviders(data);
+        displayProviders(data);
       })
       .catch(error => {
         console.error('Error:', error);
       });
     });
 
-    function displayServiceProviders(data) {
+    function displayProviders(data) {
       let html = '<h4>Available Service Providers:</h4>';
     
       // Check if the data array is empty

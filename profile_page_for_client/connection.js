@@ -99,8 +99,6 @@ let userEmail = localStorage.getItem('userEmail');
             const rateInput = document.getElementById("rate");
             const rateValue = rateInput.value;
             console.log(rateValue)
-    
-            alert('11')
             const serviceProviderName = item.usernameOfProvider;
             console.log(serviceProviderName)
           fetch(`https://coen6311-380422.nn.r.appspot.com/rateAServiceProvider`, {
