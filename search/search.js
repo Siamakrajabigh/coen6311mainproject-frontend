@@ -157,7 +157,40 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
             });
         });
       });
+
+    const form = document.getElementById("search-form");
+    const url = "https://coen6311-380422.nn.r.appspot.com/searchTicketsBySkills";
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      alert("clicked")
+
+      const data = {
+        "requiredSkills": form.searchInput.value.split(",").map(skill => skill.trim()),
+        "username":username
+      };
+      console.log(data);
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("API response:", data);
+        })
+        .catch(error => {
+          console.error("Error sending data:", error);
+        });
+    });
+
+
+
+
     }
+
   }
   else{
     alert('Nothing')
