@@ -400,7 +400,6 @@ headerTemplate.innerHTML = `
             <div class="dropdown-content">
             <a href="../profile_page/index.html">View Profile</a>
             <a href="../edit_profile/index.html">Edit Profile</a>
-            <a href="https://www.youtube.com/user/hubspot">See Ratings</a>
             <a href="#" onclick="logout()" id="logout-link">Log Out</a>
 
             </div>
