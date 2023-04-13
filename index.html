@@ -7,6 +7,7 @@
     <title>GreenGrass</title>
 
     <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/d557b1238d.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
@@ -51,9 +52,9 @@
             </form>
     
             <div class="text-end" id="landing-sign-up-in">
-              <a href="login_page/index.html" class="btn btn-warning">Login<a></a>
+              <a class="btn btn-warning">Login</a>
               <!-- <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button> -->
-              <a href="create_account_page/index.html" class="btn btn-warning">Create Account<a>
+              <a class="btn btn-warning">Create Account</a>
             </div>
           </div>
         </div>
@@ -153,30 +154,61 @@
       console.log(userEmail);
       console.log(username);
 
-      if (userEmail) {
+      if (username) {
         buttonsParent = document.getElementById("landing-sign-up-in")
-        buttonsParent.removeChild();
+        buttons = buttonsParent.children;
+        buttons[0].textContent = "Profile";
+        buttons[1].textContent = "Log out";
+        buttons[0].addEventListener('click', event =>{
+          alert('2')
+          window.location.href = "../profile_page/index.html"        
+        });
+        buttons[1].addEventListener('click', event => {
+          alert('3')
+          localStorage.clear();
+        })
 
-        let logout = document.createElement('button');
-        logout.textContent = 'Logout';
-
-        let dropDownContainer = document.createElement('div');
-        dropDownContainer.setAttribute('class', 'dropdown');
-        dropDownContainer.innerHTML = '<button>Profile Options<i class=" fa fa-user" id="userIcon"></i></button>\
-            <div class="dropdown-content">\
-            <a href="../profile_page/index.html">View Profile</a>\
-            <a href="../edit_profile/index.html">Edit Profile</a>\
-            <a href="https://www.youtube.com/user/hubspot">See Ratings</a>\
-            <a href="../index.html" id="logout-link">Log Out</a>\
-            </div>'
-        buttonsParent.appendChild(dropDownContainer);
-        buttonsParent.appendChild(logout);
-
+      }else{
+        buttons[0].addEventListener('click', event =>{
+          alert('0')
+          redirectToCreateAccount()
+        });
+        function redirectToCreateAccount() {
+          window.location.href = "../login_page/index.html";
+        }
+        buttons[1].addEventListener('click', event => {
+          alert('1')
+          window.location.href = "../create_account_page/index.html"
+        })
       }
-      logout.addEventListener("click", function() {
-      // Code to be executed when the button is clicked
-      localStorage.clear();
-      });
+      
+    </script>
+    <script>
+        const dropdownBtn = document.getElementById("btn");
+const dropdownMenu = document.getElementById("dropdown");
+const toggleArrow = document.getElementById("arrow");
+
+// Toggle dropdown function
+const toggleDropdown = function () {
+  dropdownMenu.classList.toggle("show");
+  toggleArrow.classList.toggle("arrow");
+};
+
+// Toggle dropdown open/close when dropdown button is clicked
+dropdownBtn.addEventListener("click", function (e) {
+  e.stopPropagation();
+  toggleDropdown();
+});
+
+document.addEventListener('click', (event) => {
+  // If the click is outside the dropdown menu and dropdown button, hide the menu
+  if (!dropdownMenu.contains(event.target) && !dropdownBtn.contains(event.target)) {
+    dropdownMenu.classList.remove('show');
+    toggleArrow.classList.remove('arrow');
+
+  }
+});
+
     </script>
 </body>
 </html>
