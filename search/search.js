@@ -62,9 +62,6 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
       // Display the generated HTML in a div element with ID "service-providers"
       document.getElementById('show-service-provider-info').innerHTML = html;
     }
-
-
-    alert("1")  
     //show most matched service provider
     const mostMatched = 'https://coen6311-380422.nn.r.appspot.com/findTheMostMatchedServiceProvider'
     
@@ -82,7 +79,6 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
 
     function displayMostMatchedServiceProviders(data) {
       let html = '<h4>Available Most Match Service Providers:</h4>';
-    alert("2")
       // Check if the data array is empty
       if (data.length === 0) {
         html += '<p>No service providers found.</p>';
