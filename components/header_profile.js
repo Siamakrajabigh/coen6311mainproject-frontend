@@ -452,6 +452,8 @@ let logout = function() {
 let checkUserTypeForEdit = function() {
     let username = localStorage.getItem('username');
     let userEmail = localStorage.getItem('userEmail');
+    console.log(userEmail)
+    alert('1')
 
     var data = {
 
@@ -469,7 +471,9 @@ let checkUserTypeForEdit = function() {
     })
     .then(response => response.json())
     .then(responseData => {
+        alert('2')
         if (responseData.type == "service provider") {
+          alert('3')
         window.location.href = "https://www.greengrassfreelancer.com/edit_profile/index.html";
         }
         })
