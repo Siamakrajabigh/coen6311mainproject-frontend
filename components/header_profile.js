@@ -398,8 +398,8 @@ headerTemplate.innerHTML = `
             <div class="dropdown">
             <button>Profile Options<i class=" fa fa-user" id="userIcon"></i></button>
             <div class="dropdown-content">
-            <a href="../profile_page/index.html">View Profile</a>
-            <a href="../edit_profile/index.html">Edit Profile</a>
+            <a href="#" onclick="checkUserTypeForRedirecting()" id="profile-link">View Profile</a>
+            <a href="#" onclick="checkUserTypeForEdit" id="edit-link">Edit Profile</a>
             <a href="#" onclick="logout()" id="logout-link">Log Out</a>
 
             </div>
@@ -448,5 +448,71 @@ customElements.define('header_profile-component', Header);
 let logout = function() {
   localStorage.clear();
   window.location.href = "../index.html"
+};
+let checkUserTypeForEdit = function() {
+    let username = localStorage.getItem('username');
+    let userEmail = localStorage.getItem('userEmail');
+    console.log(userEmail)
+    alert('1')
+
+    var data = {
+
+    "email" : "userEmail"
+    };
+
+    const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email:userEmail})
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        alert('2')
+        if (responseData.type == "service provider") {
+          alert('3')
+        window.location.href = "../edit_profile/index.html";
+        }
+        })
+    .catch(error => {
+      // Handle any errors that occur during the API request
+    });
+        
+     
+};
+let checkUserTypeForRedirecting = function() {
+    let username = localStorage.getItem('username');
+    let userEmail = localStorage.getItem('userEmail');
+    console.log(userEmail)
+    alert('1')
+    var data = {
+
+    "email" : "userEmail"
+    };
+
+    const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email:userEmail})
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        alert('2')
+        console.log(responseData)
+        if (responseData.type == "service provider") {
+          alert('3')
+        window.location.href = "../profile_page/index.html";
+        }
+        })
+    .catch(error => {
+      // Handle any errors that occur during the API request
+    });
 };
 
