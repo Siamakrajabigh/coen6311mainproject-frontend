@@ -65,10 +65,11 @@ let userEmail = localStorage.getItem('userEmail');
     function displayCompletedTickets(data)
     {
       const showTicketC = document.getElementById('show-completed-tickets');
-        //console.log(data);
+        console.log(data);
         let html = '';
         data.forEach(item => {
           const statusVal = item.status;
+          
           if(statusVal == `completed`)
         {
           html += `
@@ -80,12 +81,56 @@ let userEmail = localStorage.getItem('userEmail');
                 <li><b>Technical Constraints:</b> ${item.technicalConstraints}</li>
                 <li><b>Delivery Time:</b> ${item.deliveryTime}</li>
                 <li><b>Status:</b> ${item.status}</li>
+                <li><input id="rate" name="categoryName" class="form-control" placeholder="Rate your Service Provider" required></li>
+                <li><button class="rate-button" data-id="${item.id}">Rate your service</button></li>
             </ul>
           `;
         }
-        });
+
         showTicketC.innerHTML = html;
+    
+    
+      // Add event listener to the Accept Ticket buttons
+      const rateButtons = document.querySelectorAll('.rate-button');
+
+      
+      rateButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const rateInput = document.getElementById("rate");
+            const rateValue = rateInput.value;
+            console.log(rateValue)
+    
+            alert('11')
+            const serviceProviderName = item.usernameOfProvider;
+            console.log(serviceProviderName)
+          fetch(`https://coen6311-380422.nn.r.appspot.com/rateAServiceProvider`, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username:username, serviceProviderUsername:serviceProviderName,rate:rateValue})
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          alert('12')
+           window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+        })       
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
+        });
+      });
+    });
     }
+
+  
+
+
+
+
+
+
 
 
     // show personal information
