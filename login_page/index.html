@@ -115,7 +115,7 @@
                                                 <label>User Email<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                    <input type="text" class="form-control" id="useremail" placeholder="Enter Email Address">
+                                                    <input type="text" class="form-control" id="useremail" placeholder="Enter Email Address" required>
                                                 </div>
                                             </div>
 
@@ -144,7 +144,7 @@
                                             </div>
                                           </div>
                                     <div class="col-12">
-                                        <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-primary px-4 float-center mt-4" >Google login</button>
+                                        <button id="sign-in-or-out-button" onclick="checkInput()" class="btn btn-primary px-4 float-center mt-4" >Google login</button>
                                     </div>
                                 </div>
                             </div>
@@ -196,6 +196,19 @@
             
             }
           
+  </script>
+  <script>
+    const useremailInput = document.getElementById('useremail');
+    let checkInput = function() {
+      if (useremailInput.value === '') {
+        event.preventDefault();
+        alert('Please enter your email address.');
+      }
+      else{
+        alert('2')
+        getOauthorized()
+      }
+    }
   </script>
 </body>
 </html>
