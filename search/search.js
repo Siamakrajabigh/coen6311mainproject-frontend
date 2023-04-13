@@ -34,7 +34,7 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
       let html = '<h4>Available Service Providers:</h4>';
     
       // Check if the data array is empty
-      if (data.length === 0) {
+      if (data.length === 0 || data.type==='admin') {
         html += '<p>No service providers found.</p>';
       } else {
         data.forEach(item => {
@@ -79,6 +79,7 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
 
     function displayMostMatchedServiceProviders(data) {
       let html = '<h4>Available Most Match Service Providers:</h4>';
+
       // Check if the data array is empty
       if (data.length === 0) {
         html += '<p>No service providers found.</p>';
