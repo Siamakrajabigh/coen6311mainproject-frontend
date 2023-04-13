@@ -34,7 +34,7 @@
                         <h4 class="fst-normal">Manage services:</h4>
                         <ol class="list-unstyled mb-0">
                           <li><a href="../admin_page/delete_user.html">delete account</a></li>
-                          <li><a href="#">user report</a></li>
+                          <li><a href="../admin_page/user_report.html">user report</a></li>
                         </ol>
                       </div>
               
@@ -46,7 +46,7 @@
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required>
                 
-                        <button  onclick="DeleteAccount()" class="btn btn-primary px-2 float-center ">search</button>
+                        <button  onclick="userReport()" class="btn btn-primary px-2 float-center ">search</button>
                     </div>          
                 </div>
               <!-- <div class="col-md-8">          
@@ -76,28 +76,29 @@
     <footer-component></footer-component>   
 
       <script>
-        const url = 'https://coen6311-380422.nn.r.appspot.com/admin/report'
-        const dataContainer = document.getElementById('see-acitivity');
-        const username = { 
-                    "username":document.getElementById('username').value,
-                };
+        function userReport() {
+            const url = 'https://coen6311-380422.nn.r.appspot.com/admin/report'
+            const dataContainer = document.getElementById('see-acitivity');
+            const username = { 
+                "username":document.getElementById('username').value,
+            };
 
-            
-        fetch(url, {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username})
-        })
-        .then(response => response.json())
-        .then(data => {
-            displayAcivities(data);
-        }) 
+                
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(username)
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayAcivities(data);
+            }) 
+        }
 
-
-        function displayAcivities(data)
-        {
+        function displayAcivities(data) {
+        
             //console.log(data);
             let html = '';
             data.forEach(item => {

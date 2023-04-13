@@ -421,12 +421,13 @@ class Header extends HTMLElement {
 
   connectedCallback() {
     const fontAwesome = document.querySelector('link[href*="font-awesome"]');
-    const shadowRoot = this.attachShadow({ mode: 'closed' });
-    if (fontAwesome) {
-      shadowRoot.appendChild(fontAwesome.cloneNode());
-    }
+    // const shadowRoot = this.attachShadow({ mode: 'closed' });
+    // if (fontAwesome) {
+    //   shadowRoot.appendChild(fontAwesome.cloneNode());
+    // }
 
-    shadowRoot.appendChild(headerTemplate.content);
+    document.body.appendChild(headerTemplate.content);
+    // shadowRoot.appendChild();
   }
 
 }
@@ -440,7 +441,8 @@ logoutLink.addEventListener('click', (event) => {
   logout(); // call your logout function
 });
 
-function logout() 
-{
+function logout() {
   localStorage.clear();
 }
+
+
