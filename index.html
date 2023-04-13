@@ -154,12 +154,23 @@
       console.log(username);
 
       if (userEmail) {
-        buttons = document.getElementById("landing-sign-up-in")
-        buttons.removeChild();
+        buttonsParent = document.getElementById("landing-sign-up-in")
+        buttonsParent.removeChild();
 
         let logout = document.createElement('button');
         logout.textContent = 'Logout';
-        buttons.appendChild(logout);
+
+        let dropDownContainer = document.createElement('div');
+        dropDownContainer.setAttribute('class', 'dropdown');
+        dropDownContainer.innerHTML = '<button>Profile Options<i class=" fa fa-user" id="userIcon"></i></button>\
+            <div class="dropdown-content">\
+            <a href="../profile_page/index.html">View Profile</a>\
+            <a href="../edit_profile/index.html">Edit Profile</a>\
+            <a href="https://www.youtube.com/user/hubspot">See Ratings</a>\
+            <a href="../index.html" id="logout-link">Log Out</a>\
+            </div>'
+        buttonsParent.appendChild(dropDownContainer);
+        buttonsParent.appendChild(logout);
 
       }
       logout.addEventListener("click", function() {
