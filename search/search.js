@@ -107,7 +107,7 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         .then(response => response.json())
         .then(data => {
           console.log(data);
-           // window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+           window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
         })       
             .catch(error => {
               console.error('There was a problem with the fetch operation:', error);

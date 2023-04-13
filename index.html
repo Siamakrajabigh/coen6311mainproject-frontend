@@ -50,7 +50,7 @@
               <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
             </form>
     
-            <div class="text-end">
+            <div class="text-end" id="landing-sign-up-in">
               <a href="login_page/index.html" class="btn btn-warning">Login<a></a>
               <!-- <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button> -->
               <a href="create_account_page/index.html" class="btn btn-warning">Create Account<a>
@@ -152,6 +152,31 @@
       let username = localStorage.getItem('username');
       console.log(userEmail);
       console.log(username);
+
+      if (userEmail) {
+        buttonsParent = document.getElementById("landing-sign-up-in")
+        buttonsParent.removeChild();
+
+        let logout = document.createElement('button');
+        logout.textContent = 'Logout';
+
+        let dropDownContainer = document.createElement('div');
+        dropDownContainer.setAttribute('class', 'dropdown');
+        dropDownContainer.innerHTML = '<button>Profile Options<i class=" fa fa-user" id="userIcon"></i></button>\
+            <div class="dropdown-content">\
+            <a href="../profile_page/index.html">View Profile</a>\
+            <a href="../edit_profile/index.html">Edit Profile</a>\
+            <a href="https://www.youtube.com/user/hubspot">See Ratings</a>\
+            <a href="../index.html" id="logout-link">Log Out</a>\
+            </div>'
+        buttonsParent.appendChild(dropDownContainer);
+        buttonsParent.appendChild(logout);
+
+      }
+      logout.addEventListener("click", function() {
+      // Code to be executed when the button is clicked
+      localStorage.clear();
+      });
     </script>
 </body>
 </html>

@@ -380,7 +380,7 @@ headerTemplate.innerHTML = `
 
   
   </style>
-  <header class="header">
+  <div class="header">
         <div class="container">
           <div class="d-flex align-items-center justify-content-center">
     
@@ -409,7 +409,7 @@ headerTemplate.innerHTML = `
 
           </div>
         </div>
-    </header>
+</div>
 `;
 
 
@@ -426,6 +426,7 @@ class Header extends HTMLElement {
       shadowRoot.appendChild(fontAwesome.cloneNode());
     }
 
+    // document.body.appendChild(headerTemplate.content);
     shadowRoot.appendChild(headerTemplate.content);
   }
 
@@ -440,8 +441,8 @@ logoutLink.addEventListener('click', (event) => {
   logout(); // call your logout function
 });
 
-function logout() 
-{
-  localStorage.setItem('username', undefined);
-  localStorage.setItem('userEmail', undefined);
+function logout() {
+  localStorage.clear();
 }
+
+
