@@ -117,6 +117,9 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
       });
     }
   }
+  else{
+    alert('Nothing')
+  }
 })
 
 
