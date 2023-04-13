@@ -77,8 +77,6 @@ function viewAcceptedTickets(data)
             </ul>
           `;
         }
-          console.log(data);
-
         });
         showTicket.innerHTML = html;
     
