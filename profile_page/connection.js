@@ -40,7 +40,8 @@ function displayData(data) {
     var skills = [
       {id: 1, skillTitle: 'Python'}
     ]; 
-  
+
+
   fetch('https://coen6311-380422.nn.r.appspot.com/viewServiceProviderTickets', {
     method: 'POST',
     headers: {
@@ -53,11 +54,17 @@ function displayData(data) {
 viewAcceptedTickets(data);
 })
 
+
+
+
 function viewAcceptedTickets(data)
 {
   const showTicket = document.getElementById('show-tickets');
   let html = '';
         data.forEach(item => {
+          const statusVal = item.status;
+          if(statusVal == `taken`)
+          {
           html += `
             <ul>
                 <li><b>ID:</b> ${item.id}</li>
@@ -69,18 +76,18 @@ function viewAcceptedTickets(data)
                 <li><button class="Complete-button" data-id="${item.id}">Job Completed</button></li>
             </ul>
           `;
+        }
+          console.log(data);
+
         });
         showTicket.innerHTML = html;
-}
-
-dataContainer.innerHTML = html;
     
 // Add event listener to the Accept Ticket buttons
 const completeButtons = document.querySelectorAll('.Complete-button');
 completeButtons.forEach(button => {
   button.addEventListener('click', () => {
     const ticketId = button.dataset.id;
-    fetch(`https://coen6311-380422.nn.r.appspot.com/acceptTicket`, {
+    fetch(`https://coen6311-380422.nn.r.appspot.com/completeATicket`, {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json'
@@ -90,13 +97,14 @@ completeButtons.forEach(button => {
   .then(response => response.json())
   .then(data => {
     console.log(data);
-     // window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+     window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
   })       
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
       });
   });
 });
+}
 
 
 fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
