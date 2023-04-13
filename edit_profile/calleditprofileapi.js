@@ -9,7 +9,7 @@ const form = document.getElementById("apiForm");
 
       const data = {
         "username": username,
-        "skills": form.requiredSkills.value.split(",")
+        "skills": form.requiredSkills.value.split(",").map(skill => skill.trim())
       };
 
     fetch("https://coen6311-380422.nn.r.appspot.com/updateServiceProviderSkills", {

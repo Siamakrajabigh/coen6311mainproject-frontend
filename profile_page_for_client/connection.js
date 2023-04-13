@@ -2,7 +2,7 @@
     
 let username = localStorage.getItem('username');
 let userEmail = localStorage.getItem('userEmail');
-    const showTicket = document.getElementById('show-tickets');
+    const showTicket = document.getElementById('show-my-non-taken-tickets');
 
     const url = 'https://coen6311-380422.nn.r.appspot.com/viewEndUserTickets'
     
@@ -26,6 +26,9 @@ let userEmail = localStorage.getItem('userEmail');
         //console.log(data);
         let html = '';
         data.forEach(item => {
+          const statusVal = item.status;
+          if(statusVal != `completed`)
+          {
           html += `
             <ul>
                 <li><b>ID:</b> ${item.id}</li>
@@ -37,9 +40,53 @@ let userEmail = localStorage.getItem('userEmail');
                 <li><b>Status:</b> ${item.status}</li>
             </ul>
           `;
+          }
         });
         showTicket.innerHTML = html;
     }
+
+    //completed tickets
+    
+    fetch('https://coen6311-380422.nn.r.appspot.com/viewEndUserTickets', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            myUsername: username,
+            usernameOfEndUser:username })
+
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayCompletedTickets(data);
+    })       
+
+    function displayCompletedTickets(data)
+    {
+      const showTicketC = document.getElementById('show-completed-tickets');
+        //console.log(data);
+        let html = '';
+        data.forEach(item => {
+          const statusVal = item.status;
+          if(statusVal == `completed`)
+        {
+          html += `
+            <ul>
+                <li><b>ID:</b> ${item.id}</li>
+                <li><b>Task Type:</b> ${item.taskType}</li>
+                <li><b>Requirement Descriptions:</b> ${item.requirementDescriptions}</li>
+                <li><b>Required Skills:</b> ${item.requiredSkills.join(', ')}</li>
+                <li><b>Technical Constraints:</b> ${item.technicalConstraints}</li>
+                <li><b>Delivery Time:</b> ${item.deliveryTime}</li>
+                <li><b>Status:</b> ${item.status}</li>
+            </ul>
+          `;
+        }
+        });
+        showTicketC.innerHTML = html;
+    }
+
 
     // show personal information
     fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {

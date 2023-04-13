@@ -62,15 +62,13 @@
                 <article class="blog-post" style="top: 1 rem;">
                   <hr>
                   <h3>My Tickets</h3>
+                  <h2>In progress Tickets</h2>
                   <div id="show-tickets"> 
+                    </div>
                   <hr>
-                  <h2>Tasks</h2>
-                  <dl>
-                    <dt>In Progress Tickets:</dt>
-                    <dd>All tickets that are open will be displayed here</dd>
-                    <dt>Completed Tickets:</dt>
-                    <dd>Previously completed tickets will be displayed here</dd>
-                 </dl>
+                  <h2>Completed Tickets:</h2>
+                  <div id="show-completed-tickets">
+                    </div>
                 </article>
               </div>
           
@@ -82,6 +80,7 @@
     <footer-component></footer-component>
     
     <script src="connection.js"></script>
+    <script src="send_message.js"></script>
     <script>
       // const params = window.location.hash.split('&');
       // const accessToken = params[1].split('=')[1];

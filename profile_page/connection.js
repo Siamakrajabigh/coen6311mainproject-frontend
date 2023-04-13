@@ -59,6 +59,7 @@ viewAcceptedTickets(data);
 
 function viewAcceptedTickets(data)
 {
+  console.log(data);
   const showTicket = document.getElementById('show-tickets');
   let html = '';
         data.forEach(item => {
@@ -77,8 +78,6 @@ function viewAcceptedTickets(data)
             </ul>
           `;
         }
-          console.log(data);
-
         });
         showTicket.innerHTML = html;
     
@@ -106,6 +105,41 @@ completeButtons.forEach(button => {
 });
 }
 
+fetch('https://coen6311-380422.nn.r.appspot.com/viewServiceProviderTickets', {
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({myUsername:username, usernameOfServiceProvider:username})
+})
+.then(response => response.json())
+.then(data => {
+  viewCompletedTickets(data);
+})
+
+
+function viewCompletedTickets(data)
+{
+  const showTicketC = document.getElementById('show-completed-tickets');
+  let html = '';
+        data.forEach(item => {
+          const statusVal = item.status;
+          if(statusVal == `completed`)
+          {
+          html += `
+            <ul>
+                <li><b>ID:</b> ${item.id}</li>
+                <li><b>Task Type:</b> ${item.taskType}</li>
+                <li><b>Requirement Descriptions:</b> ${item.requirementDescriptions}</li>
+                <li><b>Required Skills:</b> ${item.requiredSkills.join(', ')}</li>
+                <li><b>Technical Constraints:</b> ${item.technicalConstraints}</li>
+                <li><b>Delivery Time:</b> ${item.deliveryTime}</li>
+            </ul>
+          `;
+        }
+        });
+        showTicketC.innerHTML = html;
+}
 
 fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
   method: 'POST',
@@ -170,6 +204,4 @@ sendInvitationBtn.addEventListener('click', (event) => {
     })
     .catch(error => console.log(error));
 });
-
-
-
+;

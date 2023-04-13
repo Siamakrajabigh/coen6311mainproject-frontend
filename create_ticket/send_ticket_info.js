@@ -26,6 +26,7 @@ const form = document.getElementById("apiForm");
         .then(response => response.json())
         .then(data => {
           console.log("API response:", data);
+          window.location.href = "https://www.greengrassfreelancer.com/profile_page_for_client/index.html";
         })
         .catch(error => {
           console.error("Error sending data:", error);

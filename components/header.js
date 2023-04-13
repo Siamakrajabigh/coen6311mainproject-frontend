@@ -363,11 +363,7 @@ headerTemplate.innerHTML = `
               <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
             </form>
     
-            <div class="text-end" id="sign-up-in-div">
-            <a href="login_page/index.html" class="btn btn-warning">Login<a></a>
-            <!-- <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button> -->
-            <a href="create_account_page/index.html" class="btn btn-warning">Create Account<a>
-            </div>
+           
           </div>
         </div>
     </header>

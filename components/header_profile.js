@@ -388,7 +388,7 @@ headerTemplate.innerHTML = `
                 
                 <li><a href="../index.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
                 <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="../search/search.html" class="nav-link px-2 text-white">Explore</a></li>
+                <li><a href="../search/index.html" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
                 <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>
@@ -398,10 +398,9 @@ headerTemplate.innerHTML = `
             <div class="dropdown">
             <button>Profile Options<i class=" fa fa-user" id="userIcon"></i></button>
             <div class="dropdown-content">
-            <a href="../profile_page/index.html">View Profile</a>
-            <a href="../edit_profile/index.html">Edit Profile</a>
-            <a href="https://www.youtube.com/user/hubspot">See Ratings</a>
-            <a href="../index.html" id="logout-link">Log Out</a>
+            <a href="#" onclick="checkUserTypeForRedirecting()" id="profile-link">View Profile</a>
+            <a href="#" onclick="checkUserTypeForEdit" id="edit-link">Edit Profile</a>
+            <a href="#" onclick="logout()" id="logout-link">Log Out</a>
 
             </div>
             </div>
@@ -435,14 +434,85 @@ class Header extends HTMLElement {
 customElements.define('header_profile-component', Header);
 
 
-const logoutLink = document.getElementById('logout-link');
-logoutLink.addEventListener('click', (event) => {
-  event.preventDefault(); // prevent the default link behavior
-  logout(); // call your logout function
-});
+// const logoutLink = document.getElementById('logout-link');
+// logoutLink.addEventListener('click', (event) => {
+//   alert('2');
+//   event.preventDefault(); // prevent the default link behavior
+//   logout(); // call your logout function
+// });
 
-function logout() {
+// function logout() {
+//   alert("1");
+//   localStorage.clear();
+// }
+let logout = function() {
   localStorage.clear();
-}
+  window.location.href = "../index.html"
+};
+let checkUserTypeForEdit = function() {
+    let username = localStorage.getItem('username');
+    let userEmail = localStorage.getItem('userEmail');
+    console.log(userEmail)
+    alert('1')
 
+    var data = {
+
+    "email" : "userEmail"
+    };
+
+    const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email:userEmail})
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        alert('2')
+        if (responseData.type == "service provider") {
+          alert('3')
+        window.location.href = "../edit_profile/index.html";
+        }
+        })
+    .catch(error => {
+      // Handle any errors that occur during the API request
+    });
+        
+     
+};
+let checkUserTypeForRedirecting = function() {
+    let username = localStorage.getItem('username');
+    let userEmail = localStorage.getItem('userEmail');
+    console.log(userEmail)
+    alert('1')
+    var data = {
+
+    "email" : "userEmail"
+    };
+
+    const url = 'https://coen6311-380422.nn.r.appspot.com/findAUser'
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({email:userEmail})
+    })
+    .then(response => response.json())
+    .then(responseData => {
+        alert('2')
+        console.log(responseData)
+        if (responseData.type == "service provider") {
+          alert('3')
+        window.location.href = "../profile_page/index.html";
+        }
+        })
+    .catch(error => {
+      // Handle any errors that occur during the API request
+    });
+};
 
