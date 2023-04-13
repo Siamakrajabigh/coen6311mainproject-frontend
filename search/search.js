@@ -165,7 +165,6 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         `;
       });
 
-      alert("clicked1")
       dataContainer.innerHTML = html;
     
       // Add event listener to the Accept Ticket buttons
@@ -191,42 +190,92 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         });
       });
 
-    
-
-
-
     }
 
 
-    const form = document.getElementById("search-form");
-    const url = "https://coen6311-380422.nn.r.appspot.com/searchTicketsBySkills";
+    const searchButton = document.getElementById('search-button');
+    const searchInput = document.getElementById('searchInput');
 
-    form.addEventListener("submit", event => {
-      event.preventDefault();
-      alert("clicked2")
-
-      const data = {
-        "requiredSkills": form.searchInput.value.split(",").map(skill => skill.trim()),
+    searchButton.addEventListener('click', function() {
+      const inputValue = searchInput.value.split(",").map(skill => skill.trim());
+      const data={
+        "skills":inputValue,
         "username":username
-      };
+      }
       console.log(data);
-      fetch(url, {
-        method: "POST",
+      
+      fetch('https://coen6311-380422.nn.r.appspot.com/searchTicketsBySkills', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log("API response:", data);
-        })
-        .catch(error => {
-          console.error("Error sending data:", error);
-        });
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(data => {
+        displayTickets(data);
+      })
     });
 
+    function displayTickets(data) {
+      let html = '';
+    
+      // Check if the data array is empty
+      if (data.length === 0) {
+        html += '<p>No such tickets.</p>';
+      } else {
+        data.forEach(item => {
+          html += `
+            <ul>
+              <li>ID: ${item.id}</li>
+              <li>Delivery Time: ${item.deliveryTime}</li>
+              <li>Task Type: ${item.taskType}</li>
+              <li>Required Skills: ${item.requiredSkills.join(', ')}</li>
+              <li>Technical Constraints: ${item.technicalConstraints}</li>
+              <li>Requirement Descriptions: ${item.requirementDescriptions}</li>
+              <li>End Users: ${item.endUsers.map(user => user.username).join(', ')}</li>
+              <li><button class="accept-button" data-id="${item.id}">Accept Ticket</button></li>
+            </ul>
+          `;
+        });
 
+        dataContainer.innerHTML = html;
+    
+      // Add event listener to the Accept Ticket buttons
+      const acceptButtons = document.querySelectorAll('.accept-button');
+      acceptButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const ticketId = button.dataset.id;
+          fetch(`https://coen6311-380422.nn.r.appspot.com/acceptTicket`, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({username:username, id:ticketId})
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+           window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+        })       
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+            });
+        });
+      });
+    
+      }
+    
+      // Display the generated HTML in a div element with ID "service-providers"
+      
+    }
+
+    document.getElementById('data-container').innerHTML = html;
   }
   else{
     alert('Nothing')
