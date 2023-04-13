@@ -364,9 +364,9 @@ headerTemplate.innerHTML = `
             </form>
     
             <div class="text-end" id="sign-up-in-div">
-            <a href="login_page/index.html" class="btn btn-warning">Login<a></a>
+            <a href="../login_page/index.html" class="btn btn-warning">Login<a></a>
             <!-- <button id="sign-in-or-out-button" onclick="getOauthorized()" class="btn btn-outline-primary me-2 text-white">Login</button> -->
-            <a href="create_account_page/index.html" class="btn btn-warning">Create Account<a>
+            <a href="../create_account_page/index.html" class="btn btn-warning">Create Account<a>
             </div>
           </div>
         </div>

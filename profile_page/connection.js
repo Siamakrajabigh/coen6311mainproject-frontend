@@ -168,6 +168,4 @@ sendInvitationBtn.addEventListener('click', (event) => {
     })
     .catch(error => console.log(error));
 });
-
-
-
+;
