@@ -74,7 +74,7 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     })       
 
     function displayTickets(data) {
-      let html = '';
+      let html = '<h4> Available Tickets</h4>';
       data.forEach(item => {
         html += `
           <ul>
