@@ -165,7 +165,8 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
           </ul>
         `;
       });
-    
+
+      alert("clicked1")
       dataContainer.innerHTML = html;
     
       // Add event listener to the Accept Ticket buttons
@@ -191,12 +192,19 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         });
       });
 
+    
+
+
+
+    }
+
+
     const form = document.getElementById("search-form");
     const url = "https://coen6311-380422.nn.r.appspot.com/searchTicketsBySkills";
 
     form.addEventListener("submit", event => {
       event.preventDefault();
-      alert("clicked")
+      alert("clicked2")
 
       const data = {
         "requiredSkills": form.searchInput.value.split(",").map(skill => skill.trim()),
@@ -219,10 +227,6 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         });
     });
 
-
-
-
-    }
 
   }
   else{
