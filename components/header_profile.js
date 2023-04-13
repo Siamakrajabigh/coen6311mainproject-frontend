@@ -482,6 +482,7 @@ let checkUserTypeForEdit = function() {
 let checkUserTypeForRedirecting = function() {
     let username = localStorage.getItem('username');
     let userEmail = localStorage.getItem('userEmail');
+    console.log(userEmail)
     alert('1')
     var data = {
 
@@ -500,6 +501,7 @@ let checkUserTypeForRedirecting = function() {
     .then(response => response.json())
     .then(responseData => {
         alert('2')
+        console.log(responseData)
         if (responseData.type == "service provider") {
           alert('3')
         window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
