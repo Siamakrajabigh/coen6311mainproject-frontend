@@ -1,48 +1,46 @@
 //let username = localStorage.getItem('username');
-let username = "SB1"
+let myUsername = "q"
+let theirUsername = ''
 let userEmail = localStorage.getItem('userEmail');
+function startChat(myUsername, theirUsername = null){
 fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username:username,
-            myUsername:username
+            username:myUsername,
+            myUsername:myUsername
     })
       }).then(response => response.json())
       
-      .then(data => {
-        func(data);
+      .then(myData => {
+        func(myData);
       })
-function func(data){
+function func(myData){
   fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username:'Rashel111',
-            myUsername:'Rashel111'
+            username:theirUsername,
+            myUsername:theirUsername
     })
       }).then(response => response.json())
       
-      .then(data2 => {
-        func2(data2, data);
+      .then(theirData => {
+        talkjs(myData, theirData);
       })
 }
 
-function func2(data2, data){
-  talkjs(data, data2)
-}
-
-function talkjs(data, data2) {
-  console.log(data)
-  console.log(data2)
+function talkjs(myData, theirData) {
+  console.log(myData)
+  console.log(theirData)
   var me = new Talk.User({
-    id: data2.id,
-    name: data2.username,
-    email: data2.email,
+    id: theirData.id,
+    name: theirData.username,
+    email: theirData.email,
     photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
   });
   window.talkSession = new Talk.Session({
@@ -50,9 +48,9 @@ function talkjs(data, data2) {
     me: me,
   });
   var other = new Talk.User({
-    id: data.id,
-    name: data.username,
-    email: data.email,
+    id: myData.id,
+    name: myData.username,
+    email: myData.email,
     photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
   });
 
@@ -69,3 +67,15 @@ function talkjs(data, data2) {
 Talk.ready.then(function() {
   talkjs(myChatID, myChatName, myChatEmail, myChatPhotoUrl);
 });
+}
+startChat(myUsername, theirUsername)
+    function storeText() {
+      const inputElement = document.getElementById('text-input');
+      theirUsername = inputElement.value;
+      startChat(myUsername, theirUsername)
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const storeTextButton = document.getElementById('message-button');
+      storeTextButton.addEventListener('click', storeText);
+    });
