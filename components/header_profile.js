@@ -388,7 +388,7 @@ headerTemplate.innerHTML = `
                 
                 <li><a href="../index.html"><img src="../images/GG.jpeg" alt="" height="50px" width="50px"></a></li>
                 <li><a href="../index.html" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="../search/search.html" class="nav-link px-2 text-white">Explore</a></li>
+                <li><a href="../search/index.html" class="nav-link px-2 text-white">Explore</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Career Advices</a></li>
                 <li><a href="../faq_page/faq.html" class="nav-link px-2 text-white">FAQs</a></li>
                 <li><a href="../about_page/about_page.html" class="nav-link px-2 text-white">About</a></li>

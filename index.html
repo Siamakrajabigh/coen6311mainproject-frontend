@@ -153,34 +153,37 @@
       let username = localStorage.getItem('username');
       console.log(userEmail);
       console.log(username);
-
-      if (username) {
+      function load_buttons(){
         buttonsParent = document.getElementById("landing-sign-up-in")
         buttons = buttonsParent.children;
+      if (username) {
         buttons[0].textContent = "Profile";
         buttons[1].textContent = "Log out";
         buttons[0].addEventListener('click', event =>{
-          alert('2')
+          
           window.location.href = "../profile_page/index.html"        
         });
         buttons[1].addEventListener('click', event => {
-          alert('3')
+          
           localStorage.clear();
+          load_buttons()
+          location.reload()
         })
 
       }else{
+        buttons[0].textContent = "Log In";
+        buttons[1].textContent = "Sign Up";
         buttons[0].addEventListener('click', event =>{
-          alert('0')
-          redirectToCreateAccount()
-        });
-        function redirectToCreateAccount() {
+          
           window.location.href = "../login_page/index.html";
-        }
+        });
         buttons[1].addEventListener('click', event => {
-          alert('1')
+          
           window.location.href = "../create_account_page/index.html"
         })
       }
+    }
+    load_buttons()
       
     </script>
     <script>
