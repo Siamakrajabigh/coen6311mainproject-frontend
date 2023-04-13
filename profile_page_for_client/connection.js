@@ -65,7 +65,7 @@ let userEmail = localStorage.getItem('userEmail');
     function displayCompletedTickets(data)
     {
       const showTicketC = document.getElementById('show-completed-tickets');
-        //console.log(data);
+        console.log(data);
         let html = '';
         data.forEach(item => {
           const statusVal = item.status;
@@ -80,12 +80,52 @@ let userEmail = localStorage.getItem('userEmail');
                 <li><b>Technical Constraints:</b> ${item.technicalConstraints}</li>
                 <li><b>Delivery Time:</b> ${item.deliveryTime}</li>
                 <li><b>Status:</b> ${item.status}</li>
+                <li><button class="rate-button" data-id="${item.id}">Rate you service</button></li>
             </ul>
           `;
         }
         });
         showTicketC.innerHTML = html;
     }
+
+
+
+// <li><button class="accept-button" data-id="${item.id}">Accept Ticket</button></li>
+//           </ul>
+//         `;
+//       });
+
+//       alert("clicked1")
+//       dataContainer.innerHTML = html;
+    
+//       // Add event listener to the Accept Ticket buttons
+//       const acceptButtons = document.querySelectorAll('.accept-button');
+//       acceptButtons.forEach(button => {
+//         button.addEventListener('click', () => {
+//           const ticketId = button.dataset.id;
+//           fetch(`https://coen6311-380422.nn.r.appspot.com/acceptTicket`, {
+//             method: 'POST',
+//             headers: {
+//             'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({username:username, id:ticketId})
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//           console.log(data);
+//            window.location.href = "https://www.greengrassfreelancer.com/profile_page/index.html";
+//         })       
+//             .catch(error => {
+//               console.error('There was a problem with the fetch operation:', error);
+//             });
+//         });
+//       });
+
+
+
+
+
+
 
 
     // show personal information
