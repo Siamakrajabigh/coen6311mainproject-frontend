@@ -13,6 +13,7 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
 
 .then(data => {
   if(data.type === "client"){
+   
     const show_Data = document.getElementById('show-service-provider-info');
 
     const url_show_service_provider = 'https://coen6311-380422.nn.r.appspot.com/showAllServiceProviders'
@@ -55,7 +56,7 @@ fetch('https://coen6311-380422.nn.r.appspot.com/findUserByUsername', {
     }
   }
   
-  if(data.type === "service provider")
+  else if(data.type === "service provider")
   {
     const dataContainer = document.getElementById('data-container');
 
